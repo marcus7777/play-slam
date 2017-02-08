@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <title>play-slam</title>
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+    <script src="../../iron-test-helpers/mock-interactions.js"></script>
+    <link rel="import" href="../../polymer/polymer.html">
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../play-slam.html">
+  </head>
+  <body>
+    <test-fixture id="playSlam">
+      <template>
+        <play-slam></play-slam> //TODO add attributes
+      </template>
+    </test-fixture>
+    <script>
+      suite('<play-slam>', function () {
+        var playSlam;
+        setup(function () {
+          playSlam = fixture('playSlam');
+        });
+        teardown(function () {
+          //...
+        });
+        suite("This test is just to show that tests are running", function () {
+          test("test is running", function(done) {
+            done()
+          })
+        })
+        suite('These test allow you to interact with the element', function () {
+          test('can be triggered with space', function(done) {
+            playSlam.addEventListener('keydown', function() {
+              done()
+            })
+            MockInteractions.pressSpace(playSlam)
+          })
+          test('can be clicked', function(done) {
+            playSlam.addEventListener('click', function() {
+              done()
+            })
+            MockInteractions.tap(playSlam)
+          })
+        })
+      })
+    </script>
+  </body>
+</html>
