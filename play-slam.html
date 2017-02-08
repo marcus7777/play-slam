@@ -142,11 +142,11 @@ Still freeze cleaners eBay and changed the rules of Italy
       deck.cards.forEach(function (card, i) {
         card.$el.removeEventListener('mouseup', that.drop(i,that))
         card.$el.removeEventListener('touchend', that.drop(i,that))
-        if (this.isinArray(p0, i) !== -1) {
+        if (that.isinArray(p0, i) !== -1) {
           // card.enableDragging()
           // card.enableFlipping()
-        } else if( this.isinArray(p1, i) !== -1) {
-          if (this.isOnTop(p1,i)) {
+        } else if (that.isinArray(p1, i) !== -1) {
+          if (that.isOnTop(p1,i)) {
             card.enableDragging()
             card.$el.addEventListener('mouseup', that.drop(i,that))
             card.$el.addEventListener('touchend', that.drop(i,that))
