@@ -143,12 +143,11 @@ Still freeze cleaners eBay and changed the rules of Italy
     allowPlay: function(p0,p1,middle,deck){
       var that = this
       deck.cards.forEach(function (card, i) {
-        card.$el.removeEventListener('mouseup', that.drop(i,that))
-        card.$el.removeEventListener('touchend', that.drop(i,that))
         if (that.isinArray(p0, i) !== -1) {
           // card.enableDragging()
           // card.enableFlipping()
         } else if (that.isinArray(p1, i) !== -1) {
+
           if (that.isOnTop(p1,i)) {
             card.enableDragging()
             card.$el.addEventListener('mouseup', that.drop(i,that))
@@ -156,14 +155,23 @@ Still freeze cleaners eBay and changed the rules of Italy
             if (card.side != "front") {
               card.enableFlipping()
             }
+          } else {
+            card.$el.removeEventListener('mouseup', that.drop(i,that))
+            card.$el.removeEventListener('touchend', that.drop(i,that))
           }
           // card.enableFlipping()
         } else {
           card.disableDragging()
           card.disableFlipping()
+          if (that.isOnTop(middle,i)) {
+            card.$el.removeEventListener('mouseup', that.drop(i,that))
+            card.$el.removeEventListener('touchend', that.drop(i,that))
+          }
           
           if (middle[1].indexOf(i) !== -1 || middle[2].indexOf(i) !== -1) {
             card.setSide('front')
+            card.$el.removeEventListener('mouseup', that.drop(i,that))
+            card.$el.removeEventListener('touchend', that.drop(i,that))
           }
         }
       }) 
