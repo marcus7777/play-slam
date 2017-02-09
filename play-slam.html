@@ -183,7 +183,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         Once a player has got rid of all of there cards 
         by moving them to the middle piles (A || B) 
         than go in to grab mode
-       
+        see getPile for map
         You can only take 'from' the top of the piles (pop)
         p0 & p1:
         can move amongst themselves but not across to the other set if:
@@ -289,17 +289,13 @@ Still freeze cleaners eBay and changed the rules of Italy
     },
     drop: function(picked,that){
       return function(event) {
-          console.log(
-            event.x,
-            event.y,
-            picked
-          )
-        if (event.offsetX + event.offsetY) {
-          that.place(event.x,event.y, picked,that.deck,that.p0,that.p1,that.middle)
-        }
+        console.log(
+          event.x,
+          event.y,
+          picked
+        )
+        that.place(event.x,event.y, picked,that.deck,that.p0,that.p1,that.middle)
       }
-      
-      
     },
     getPile: function(x,y){
       /*
