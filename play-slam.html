@@ -252,12 +252,12 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.allowPlay(p0,p1,middle,deck) 
     },
     removeCard: function(ar,thisOne) {
-      return ar.reduce(function (accumulator, currentValue, currentIndex) {
-        accumulator.push(currentValue.reduce(function (accumulator1, currentValue1, currentIndex1) {
-          if (currentValue1 !== thisOne) {
-            accumulator1.push(currentValue1)
+      return ar.reduce(function (accumulator, currentValue) {
+        accumulator.push(currentValue.reduce(function (accumulator, currentValue) {
+          if (currentValue !== thisOne) {
+            accumulator.push(currentValue)
           }
-          return accumulator1
+          return accumulator
         },[]))
         return accumulator
       },[])
