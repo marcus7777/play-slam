@@ -50,6 +50,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.play(gP0Cards,gP1Cards,gTable,deck)
     },
     play: function(p0Cards, p1Cards, middle, deck){
+      deck.flip()
+      deck.fan()
+      deck.shuffle()
       deck.shuffle()
       var that = this
       var plan = [
