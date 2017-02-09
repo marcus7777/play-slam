@@ -218,14 +218,12 @@ Still freeze cleaners eBay and changed the rules of Italy
           switch (to) {
             case "0":
               if (player == 0) {
-                p0[0].push(card)
                 notRemove = 0
                 move = true
               }
               break
             case "1":
               if (player == 0) {
-                p0[1].push(card)
                 notRemove = 1
                 move = true
               }
@@ -233,56 +231,48 @@ Still freeze cleaners eBay and changed the rules of Italy
             case "2":
               if (player == 0) {
                 notRemove = 2
-                p0[2].push(card)
                 move = true
               }
               break
             case "3":
               if (player == 0) {
                 notRemove = 3
-                p0[3].push(card)
                 move = true
               }
               break
             case "4":
               if (player == 0) {
                 notRemove = 4
-                p0[4].push(card)
                 move = true
               }
               break
             case "5":
               if (player == 1) {
                 notRemove = 0
-                p1[0].push(card)
                 move = true
               }
               break
             case "6":
               if (player == 1) {
                 notRemove = 1
-                p1[1].push(card)
                 move = true
               }
               break
             case "7":
               if (player == 1) {
                 notRemove = 2
-                p1[2].push(card)
                 move = true
               }
               break
             case "8":
               if (player == 1) {
                 notRemove = 3
-                p1[3].push(card)
                 move = true
               }
               break
             case "9":
               if (player == 1) {
                 notRemove = 4
-                p1[4].push(card)
                 move = true
              }
              break
@@ -297,7 +287,17 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
         }  
         if (move) {
-          p1 = this.removeCard(p1,card,notRemove)
+          if (player == 1) {
+            p1 = this.removeCard(p1,card)
+            if (notRemove != -1) {
+              p1[notRemove].push(card)
+            }
+          } else {
+            p0 = this.removeCard(p1,card)
+            if (notRemove != -1) {
+              p0[notRemove].push(card)
+            }
+          }
         }
         this.allowPlay(p0,p1,middle,deck) 
       }
@@ -305,7 +305,7 @@ Still freeze cleaners eBay and changed the rules of Italy
     removeCard: function(ar,thisOne, notRemove) {
       return ar.reduce(function (accumulator, currentValue) {
         accumulator.push(currentValue.reduce(function (accumulator, currentValue, cindex) {
-          if (currentValue !== thisOne && cindex !== notRemove) {
+          if (currentValue !== thisOne) {
             accumulator.push(currentValue)
           }
           return accumulator
