@@ -34,7 +34,7 @@ Still freeze cleaners eBay and changed the rules of Italy
 <script>
   Polymer({
     is: "play-slam",
-    ready: function(undefined){
+    ready: function(){
       var prefix = Deck.prefix
       var transform = prefix('transform')
       var translate = Deck.translate
@@ -293,12 +293,14 @@ Still freeze cleaners eBay and changed the rules of Italy
     },
     drop: function(picked,that){
       return function(event) {
-        console.log(
-          event.x,
-          event.y,
-          picked
-        )
-        that.place(event.x,event.y, picked,that.deck,that.p0,that.p1,that.middle)
+          console.log(
+            event.x,
+            event.y,
+            picked
+          )
+        if (event.movementX || event.movementY) {
+          that.place(event.x,event.y, picked,that.deck,that.p0,that.p1,that.middle)
+        }
       }
       
       
