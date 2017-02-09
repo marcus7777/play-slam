@@ -185,7 +185,8 @@ Still freeze cleaners eBay and changed the rules of Italy
        */
       var player = 1
       var to = this.getPile(x,y)
-      p1 = this.removeCard(p1,card)
+      var move = false
+      
       // p0 = this.removeCard(p0,card)
       // middle = this.removeCard(middle,card)
      
@@ -194,61 +195,76 @@ Still freeze cleaners eBay and changed the rules of Italy
            case "0":
              if (player == 0) {
                p0[0].push(card)
+               move = true
              }
               break
            case "1":
              if (player == 0) {
                p0[1].push(card)
+               move = true
              }
              break
            case "2":
              if (player == 0) {
                p0[2].push(card)
+               move = true
              }
              break
            case "3":
              if (player == 0) {
                p0[3].push(card)
+               move = true
              }
              break
            case "4":
              if (player == 0) {
                p0[4].push(card)
+               move = true
              }
              break
            case "5":
              if (player == 1) {
                p1[0].push(card)
+               move = true
              }
              break
            case "6":
              if (player == 1) {
                p1[1].push(card)
+               move = true
              }
              break
            case "7":
              if (player == 1) {
                p1[2].push(card)
+               move = true
              }
              break
            case "8":
              if (player == 1) {
                p1[3].push(card)
+               move = true
              }
              break
            case "9":
              if (player == 1) {
                p1[4].push(card)
+               move = true
              }
              break
            case "A":
             middle[1].push(card)
+            move = true
             break
            case "B":
             middle[2].push(card)
+            move = true
             break
         }
       }  
+      if (move) {
+        p1 = this.removeCard(p1,card)
+      }
       this.allowPlay(p0,p1,middle,deck) 
     },
     removeCard: function(ar,thisOne) {
