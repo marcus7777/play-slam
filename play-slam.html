@@ -194,71 +194,79 @@ Still freeze cleaners eBay and changed the rules of Italy
        */
       var player = 1
       var to = this.getPile(x,y)
+      var fromP0
+      var fromP1
+      var from
+      if ((fromP1 = this.isinArray(p1,card)) !== -1) {
+        from = "56789"[fromP1]
+      } else if ((fromP0 = this.isinArray(p0,card)) !== -1) {
+        from = "01234"[fromP0]
+      }
       var move = false
       
       // p0 = this.removeCard(p0,card)
       // middle = this.removeCard(middle,card)
-     
-      if (card) {
-         switch (to) {
-           case "0":
-             if (player == 0) {
-               p0[0].push(card)
-               move = true
-             }
+      if (card !== from) {
+        if (card) {
+          switch (to) {
+            case "0":
+              if (player == 0) {
+                p0[0].push(card)
+                move = true
+              }
               break
-           case "1":
-             if (player == 0) {
-               p0[1].push(card)
-               move = true
-             }
-             break
-           case "2":
-             if (player == 0) {
-               p0[2].push(card)
-               move = true
-             }
-             break
-           case "3":
-             if (player == 0) {
-               p0[3].push(card)
-               move = true
-             }
-             break
-           case "4":
-             if (player == 0) {
-               p0[4].push(card)
-               move = true
-             }
-             break
-           case "5":
-             if (player == 1) {
-               p1[0].push(card)
-               move = true
-             }
-             break
-           case "6":
-             if (player == 1) {
-               p1[1].push(card)
-               move = true
-             }
-             break
-           case "7":
-             if (player == 1) {
-               p1[2].push(card)
-               move = true
-             }
-             break
-           case "8":
-             if (player == 1) {
-               p1[3].push(card)
-               move = true
-             }
-             break
-           case "9":
-             if (player == 1) {
-               p1[4].push(card)
-               move = true
+            case "1":
+              if (player == 0) {
+                p0[1].push(card)
+                move = true
+              }
+              break
+            case "2":
+              if (player == 0) {
+                p0[2].push(card)
+                move = true
+              }
+              break
+            case "3":
+              if (player == 0) {
+                p0[3].push(card)
+                move = true
+              }
+              break
+            case "4":
+              if (player == 0) {
+                p0[4].push(card)
+                move = true
+              }
+              break
+            case "5":
+              if (player == 1) {
+                p1[0].push(card)
+                move = true
+              }
+              break
+            case "6":
+              if (player == 1) {
+                p1[1].push(card)
+                move = true
+              }
+              break
+            case "7":
+              if (player == 1) {
+                p1[2].push(card)
+                move = true
+              }
+              break
+            case "8":
+              if (player == 1) {
+                p1[3].push(card)
+                move = true
+              }
+              break
+            case "9":
+              if (player == 1) {
+                p1[4].push(card)
+                move = true
              }
              break
            case "A":
