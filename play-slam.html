@@ -255,7 +255,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       return ar.reduce(function (accumulator, currentValue, currentIndex) {
         return accumulator.push(currentValue.reduce(function (accumulator1, currentValue1, currentIndex1) {
           if (currentValue1 !== thisOne) {
-            return accumulator1.push(currentValue)
+            return accumulator1.push(currentValue1)
           } else {
             return accumulator1
           }
