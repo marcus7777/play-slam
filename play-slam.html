@@ -149,36 +149,37 @@ Still freeze cleaners eBay and changed the rules of Italy
     allowPlay: function(p0,p1,middle,deck){
       var that = this
       deck.cards.forEach(function (card, i) {
-        if (that.isinArray(p0, i) !== -1) {
+        var c = card.suit * 13 + card.rank
+        if (that.isinArray(p0, c) !== -1) {
           // card.enableDragging()
           // card.enableFlipping()
-        } else if (that.isinArray(p1, i) !== -1) {
+        } else if (that.isinArray(p1, c) !== -1) {
           if (card.side != "front") {
             card.enableFlipping()
           } else {
             card.disableFlipping()
           }
-          if (that.isOnTop(p1,i)) {
+          if (that.isOnTop(p1,c)) {
             card.enableDragging()
-            card.$el.addEventListener('mouseup', that.drop(i,that))
-            card.$el.addEventListener('touchend', that.drop(i,that))
+            card.$el.addEventListener('mouseup', that.drop(c,that))
+            card.$el.addEventListener('touchend', that.drop(c,that))
           } else {
-            card.$el.removeEventListener('mouseup', that.drop(i,that))
-            card.$el.removeEventListener('touchend', that.drop(i,that))
+            card.$el.removeEventListener('mouseup', that.drop(c,that))
+            card.$el.removeEventListener('touchend', that.drop(c,that))
           }
           // card.enableFlipping()
         } else {
           card.disableDragging()
           card.disableFlipping()
-          if (that.isOnTop(middle,i)) {
-            card.$el.removeEventListener('mouseup', that.drop(i,that))
-            card.$el.removeEventListener('touchend', that.drop(i,that))
+          if (that.isOnTop(middle,c)) {
+            card.$el.removeEventListener('mouseup', that.drop(c,that))
+            card.$el.removeEventListener('touchend', that.drop(c,that))
           }
           
-          if (middle[1].indexOf(i) !== -1 || middle[2].indexOf(i) !== -1) {
+          if (middle[1].indexOf(c) !== -1 || middle[2].indexOf(c) !== -1) {
             card.setSide('front')
-            card.$el.removeEventListener('mouseup', that.drop(i,that))
-            card.$el.removeEventListener('touchend', that.drop(i,that))
+            card.$el.removeEventListener('mouseup', that.drop(c,that))
+            card.$el.removeEventListener('touchend', that.drop(c,that))
           }
         }
       })
