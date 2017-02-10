@@ -67,7 +67,8 @@ Still freeze cleaners eBay and changed the rules of Italy
       ]
       
       deck.queue(function (next) {
-        deck.cards.forEach(function (card, i) {
+        deck.cards.forEach(function (card) {
+          var i = card.suit * 13 + card.rank
           var theX
           var theY
           var yShift = 0
@@ -281,12 +282,16 @@ Still freeze cleaners eBay and changed the rules of Italy
              }
              break
            case "A":
-             middle[1].push(card)
-             move = true
+             if ((card % 13) == ((middle[1][middle[1].length - 1] + 1) % 13) || (card % 13) == ((middle[1][middle[1].length - 1] - 1) % 13)) { 
+               middle[1].push(card)
+               move = true
+             }
              break
            case "B":
-             middle[2].push(card)
-             move = true
+             if ((card % 13) == ((middle[2][middle[2].length - 1] + 1) % 13) || (card % 13) == ((middle[2][middle[2].length - 1] - 1) % 13)) { 
+               middle[2].push(card)
+               move = true
+             }
              break
           }
         }  
