@@ -170,17 +170,18 @@ Still freeze cleaners eBay and changed the rules of Italy
       deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
         if (that.isinArray(p0, c) !== -1 || that.isinArray(p1, c) !== -1) {
-          if (card.side != "front") {
-            card.enableFlipping()
-          } else {
-            card.disableFlipping()
-          }
           if (that.isOnTop(p0,c) || that.isOnTop(p1,c)) {
+            if (card.side != "front") {
+              card.enableFlipping()
+            } else {
+              card.disableFlipping()
+            }
             card.enableDragging()
             card.$el.addEventListener('mouseup', that.drop(c,that))
             card.$el.addEventListener('touchend', that.drop(c,that))
           } else {
             card.disableDragging()
+            card.disableFlipping()
             card.$el.removeEventListener('mouseup', that.drop(c,that))
             card.$el.removeEventListener('touchend', that.drop(c,that))
           }
