@@ -255,32 +255,42 @@ Still freeze cleaners eBay and changed the rules of Italy
               break
             case "5":
               if (player == 1) {
-                notRemove = 0
-                move = true
+                if ((card % 13) == ((p1[0][p1[0].length - 1]) % 13)) {
+                  notRemove = 0
+                  move = true
+                }
               }
               break
             case "6":
               if (player == 1) {
-                notRemove = 1
-                move = true
+                if ((card % 13) == ((p1[1][p1[1].length - 1]) % 13)) {
+                  notRemove = 1
+                  move = true
+                }
               }
               break
             case "7":
               if (player == 1) {
-                notRemove = 2
-                move = true
+                if ((card % 13) == ((p1[2][p1[2].length - 1]) % 13)) {
+                  notRemove = 2
+                  move = true
+                }
               }
               break
             case "8":
               if (player == 1) {
-                notRemove = 3
-                move = true
+                if ((card % 13) == ((p1[3][p1[3].length - 1]) % 13)) {
+                  notRemove = 3
+                  move = true
+                }
               }
               break
             case "9":
               if (player == 1) {
-                notRemove = 4
-                move = true
+                if ((card % 13) == ((p1[4][p1[4].length - 1]) % 13)) {
+                  notRemove = 4
+                  move = true
+                }
              }
              break
            case "A":
