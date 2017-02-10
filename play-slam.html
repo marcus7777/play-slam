@@ -112,6 +112,9 @@ Still freeze cleaners eBay and changed the rules of Italy
             theY = 1 
             onComplete = function () {
               setTimeout(function () {
+                that.count = 4
+              }, 4000)
+              setTimeout(function () {
                 that.count = 5
               }, 5000)
               setTimeout(function () {
@@ -166,24 +169,21 @@ Still freeze cleaners eBay and changed the rules of Italy
       var that = this
       deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
-        if (that.isinArray(p0, c) !== -1) {
-          // card.enableDragging()
-          // card.enableFlipping()
-        } else if (that.isinArray(p1, c) !== -1) {
+        if (that.isinArray(p0, c) !== -1 || that.isinArray(p1, c) !== -1) {
           if (card.side != "front") {
             card.enableFlipping()
           } else {
             card.disableFlipping()
           }
-          if (that.isOnTop(p1,c)) {
+          if (that.isOnTop(p0,c) || that.isOnTop(p1,c)) {
             card.enableDragging()
             card.$el.addEventListener('mouseup', that.drop(c,that))
             card.$el.addEventListener('touchend', that.drop(c,that))
           } else {
+            card.disableDragging()
             card.$el.removeEventListener('mouseup', that.drop(c,that))
             card.$el.removeEventListener('touchend', that.drop(c,that))
           }
-          // card.enableFlipping()
         } else {
           card.disableDragging()
           card.disableFlipping()
@@ -227,7 +227,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var from
       if ((fromP1 = this.isinArray(p1,card)) !== -1) {
         from = "56789"[fromP1]
-        console.log(card % 13)
+        player = 1
       } else if ((fromP0 = this.isinArray(p0,card)) !== -1) {
         from = "01234"[fromP0]
         player = 0
