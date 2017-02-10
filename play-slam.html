@@ -28,7 +28,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       text-size-adjust: 100%;
     }
     </style>
-    <div id="container"></div>
+    <div id="container">[[count]]</div>
   </template>
 </dom-module>
 <script>
@@ -112,6 +112,22 @@ Still freeze cleaners eBay and changed the rules of Italy
             theY = 1 
             onComplete = function () {
               setTimeout(function () {
+                that.count = 5
+              }, 5000)
+              setTimeout(function () {
+                that.count = 4
+              }, 6000)
+              setTimeout(function () {
+                that.count = 3
+              }, 7000)
+              setTimeout(function () {
+                that.count = 2
+              }, 8000)
+              setTimeout(function () {
+                that.count = 1
+              }, 9000)
+              setTimeout(function () {
+                that.count = ""
                 that.allowPlay(p0Cards,p1Cards,middle,deck)
               }, 10000)
             }
