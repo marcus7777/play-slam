@@ -256,7 +256,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               break
             case "5":
               if (player == 1) {
-                if ((card % 13) == ((p1[0][p1[0].length - 1]) % 13)) {
+                if (p1[0].length == 0 || (card % 13) == ((p1[0][p1[0].length - 1]) % 13)) {
                   notRemove = 0
                   move = true
                 }
@@ -264,7 +264,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               break
             case "6":
               if (player == 1) {
-                if ((card % 13) == ((p1[1][p1[1].length - 1]) % 13)) {
+                if (p1[1].length == 0 || (card % 13) == ((p1[1][p1[1].length - 1]) % 13)) {
                   notRemove = 1
                   move = true
                 }
@@ -272,7 +272,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               break
             case "7":
               if (player == 1) {
-                if ((card % 13) == ((p1[2][p1[2].length - 1]) % 13)) {
+                if (p1[2].length == 0 || (card % 13) == ((p1[2][p1[2].length - 1]) % 13)) {
                   notRemove = 2
                   move = true
                 }
@@ -280,7 +280,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               break
             case "8":
               if (player == 1) {
-                if ((card % 13) == ((p1[3][p1[3].length - 1]) % 13)) {
+                if (p1[3].length == 0 || (card % 13) == ((p1[3][p1[3].length - 1]) % 13)) {
                   notRemove = 3
                   move = true
                 }
@@ -288,7 +288,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               break
             case "9":
               if (player == 1) {
-                if ((card % 13) == ((p1[4][p1[4].length - 1]) % 13)) {
+                if (p1[4].length == 0 || (card % 13) == ((p1[4][p1[4].length - 1]) % 13)) {
                   notRemove = 4
                   move = true
                 }
