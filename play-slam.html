@@ -111,7 +111,9 @@ Still freeze cleaners eBay and changed the rules of Italy
             theX = 3
             theY = 1 
             onComplete = function () {
-              that.allowPlay(p0Cards,p1Cards,middle,deck)
+              setTimeout(function () {
+                that.allowPlay(p0Cards,p1Cards,middle,deck)
+              }, 10000)
             }
           }     
           card.animateTo({
