@@ -115,12 +115,6 @@ Still freeze cleaners eBay and changed the rules of Italy
             }
           }     
           card.animateTo({
-            duration: 500,
-            ease: 'quartOut',
-            x: 0,
-            y: (((theY/2) * window.innerHeight - window.innerHeight / 2) *.6),
-          })
-          card.animateTo({
             delay: 500 + card.pos * 75,
             duration: 500 + card.pos * 27,
             ease: 'quartOut',
@@ -214,7 +208,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var from
       if ((fromP1 = this.isinArray(p1,card)) !== -1) {
         from = "56789"[fromP1]
-        console.log(card % 13 + 1)
+        console.log(card % 13)
       } else if ((fromP0 = this.isinArray(p0,card)) !== -1) {
         from = "01234"[fromP0]
         player = 0
