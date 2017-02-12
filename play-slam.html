@@ -269,7 +269,7 @@ Still freeze cleaners eBay and changed the rules of Italy
              break
            case "B":
              var topCardB = middle[2][middle[2].length - 1]
-             if ((card % 13) == (topCardB + 1) % 13) || (card % 13) == ((topCardB - 1) % 13)) { 
+             if ((card % 13) == ((topCardB + 1) % 13) || (card % 13) == ((topCardB - 1) % 13)) { 
                middle[2].push(card)
                move = true
              }
