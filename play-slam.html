@@ -131,7 +131,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               }, 9600)
               setTimeout(function () {
                 that.count = ""
-                that.allowPlay(p0Cards,p1Cards,middle,deck)
+                that.allowPlay(deck)
               }, 11200)
             }
           }     
@@ -165,7 +165,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       })
       return onTop
     }, 
-    allowPlay: function(p0,p1,middle,deck){
+    allowPlay: function(deck){
       var that = this
       var p0 =       [[],[],[],[],[]]
       var middle =   [[],[],   [],[]]
@@ -220,12 +220,8 @@ Still freeze cleaners eBay and changed the rules of Italy
         }
       })
       // update game
-      this.p0 = p0
       console.log(p0)
-      this.p1 = p1
       console.log(p1)
-      
-      this.middle = middle
       this.deck = deck
     },
     place: function(x,y,card,deck,p0,p1,middle){
@@ -300,7 +296,7 @@ Still freeze cleaners eBay and changed the rules of Italy
             }
           }
         }
-        this.allowPlay(p0,p1,middle,deck) 
+        this.allowPlay(deck) 
       }
     },
     removeCard: function(ar,thisOne, notRemove) {
