@@ -167,6 +167,25 @@ Still freeze cleaners eBay and changed the rules of Italy
     }, 
     allowPlay: function(p0,p1,middle,deck){
       var that = this
+      var p0 =       [[],[],[],[],[]]
+      var middle =   [[],[],   [],[]]
+      var p1 =       [[],[],[],[],[]]
+      deck.cards.forEach(function (card) {
+         var pile = this.getPile(card.x,card.y)
+         var c = card.suit * 13 + card.rank
+         if        (pile == "0" || pile == "1" || pile == "2" || pile == "3" || pile == "4"){
+           "01234".indexOf(pile)
+           p0["01234".indexOf(pile)].push(c)
+         } else if (pile == "a" || pile == "A" || pile == "|" || pile == "B" || pile == "b"){
+           "aA|Bb".indexOf(pile)
+           middle["aABb".indexOf(pile)].push(c)
+         } else if (pile == "5" || pile == "6" || pile == "7" || pile == "8" || pile == "9"){
+           "56789".indexOf(pile)
+           p1["56789".indexOf(pile)].push(c)
+         }
+      })
+      
+      
       deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
         if (that.isinArray(p0, c) !== -1 || that.isinArray(p1, c) !== -1) {
