@@ -196,8 +196,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
           
           if (middle[1].indexOf(c) !== -1 || middle[2].indexOf(c) !== -1) {
-            card.setSide('front')
-            that.removeEventListener(card.$el)
+            that.removeEventListener(card.$el).setSide('front')
           }
         }
       })
@@ -210,7 +209,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         var old_element = el
         var new_element = old_element.cloneNode(true)
         if (old_element.parentNode) {
-          old_element.parentNode.replaceChild(new_element, old_element)
+          return old_element.parentNode.replaceChild(new_element, old_element)
         }
       }
     },
