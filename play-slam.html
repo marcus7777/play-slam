@@ -192,6 +192,7 @@ Still freeze cleaners eBay and changed the rules of Italy
             if (card.addedEL) {
               card.$el.removeEventListener("mouseup",card.addedEL)
               card.$el.removeEventListener("touchend",card.addedEL)
+              delete(card.addedEL)
             }
           }
         } else {
@@ -200,6 +201,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           if (card.addedEL) {
             card.$el.removeEventListener("mouseup",card.addedEL)
             card.$el.removeEventListener("touchend",card.addedEL)
+            delete(card.addedEL)
           }
           if (middle[1].indexOf(c) !== -1 || middle[2].indexOf(c) !== -1) {
             card.setSide('front')
