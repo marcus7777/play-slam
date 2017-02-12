@@ -68,13 +68,10 @@ Still freeze cleaners eBay and changed the rules of Italy
             hand = 0
           } else if (card.pos < 30) {
             hand = 1
-            time = -15
           } else if (card.pos < 40) {
             hand = 0
-            time = -25
           } else if (card.pos < 51) {
             hand = 1
-            time = -35
           } else {
             hand = 0
             var onComplete = function (){
@@ -83,7 +80,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
             
           card.animateTo({
-            delay: (card.pos - time) * 40,
+            delay: 40,
             duration: 500,
             ease: 'quartOut',
             x: ((2/4) * window.innerWidth - window.innerWidth / 2),
