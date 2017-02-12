@@ -31,7 +31,7 @@ Still freeze cleaners eBay and changed the rules of Italy
     </style>
     <div id="container">[[count]]</div>
     <template is="dom-if" if="[[setReady]]">
-      <paper-button on-tap="flipTheCards">Ready</paper-button>
+      <paper-button on-tap="isReady">Ready</paper-button>
     </template>
   </template>
 </dom-module>
@@ -197,6 +197,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       })
       return onTop
     },
+    isReady: function(){
+      this.flipTheCards()
+    }.
     flipTheCards: function(topCards){
       var that = this
       if (this.middle[0].length || this.middle[4].length) {
