@@ -149,10 +149,10 @@ Still freeze cleaners eBay and changed the rules of Italy
       return index
     },
     isOnTop: function (ar,test) { 
-      var onTop = false
+      var onTop = -1
       ar.forEach(function (arr,i) {
         if (arr.length && arr[arr.length - 1] == test) {
-          onTop = true
+          onTop = i
         }
       })
       return onTop
@@ -165,7 +165,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
         if (that.isinArray(p0, c) !== -1 || that.isinArray(p1, c) !== -1) {
-          if (that.isOnTop(p0, c) || that.isOnTop(p1, c)) {
+          if (that.isOnTop(p0, c) !== -1 || that.isOnTop(p1, c) !== -1 ) {
             if (card.side != "front") {
               card.enableFlipping()
             } else {
