@@ -166,40 +166,41 @@ Still freeze cleaners eBay and changed the rules of Italy
     },
     flipTheCards: function(topCards){
       var that = this
-      if (topCards) {
-        var onComplete  = function () {
-          that.deck.cards[topCards[0]].setSide('front')
-          that.deck.cards[topCards[1]].setSide('front')
-          that.middle[1].push(that.middle[0].pop())
-          that.middle[2].push(that.middle[3].pop())
-          that.set("setReady", true)
-        }
-        this.deck.cards[topCards[0]].animateTo({
-          delay: 50,
-          duration: 1500,
-          ease: 'quartOut',
-          x: ((1/4) * window.innerWidth - window.innerWidth / 2) * .7,
-          y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
-        })
-        this.deck.cards[topCards[1]].animateTo({
-          delay: 50,
-          duration: 1500,
-          ease: 'quartOut',
-          x: ((3/4) * window.innerWidth - window.innerWidth / 2) * .7,
-          y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
-          onComplete: onComplete,
-        })
-      } else {
-        if (this.)
-        // find top cards for middle pile
-        topCards = [this.middle[0].length]
-        deck.cards.forEach(function (card) {
-          var c = card.suit * 13 + card.rank
-          if (that.middle[0][that.middle[0].length] === c || that.middle[4][that.middle[4].length] === c) {
-            topCards.push(c)
+      if (this.middle[0].length || this.middle[4].length) {
+        if (topCards) {
+          var onComplete  = function () {
+            that.deck.cards[topCards[0]].setSide('front')
+            that.deck.cards[topCards[1]].setSide('front')
+            that.middle[1].push(that.middle[0].pop())
+            that.middle[2].push(that.middle[3].pop())
+            that.set("setReady", true)
           }
-        })
-        this.flipTheCards(topCards)
+          this.deck.cards[topCards[0]].animateTo({
+            delay: 50,
+            duration: 1500,
+            ease: 'quartOut',
+            x: ((1/4) * window.innerWidth - window.innerWidth / 2) * .7,
+            y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
+          })
+          this.deck.cards[topCards[1]].animateTo({
+            delay: 50,
+            duration: 1500,
+            ease: 'quartOut',
+            x: ((3/4) * window.innerWidth - window.innerWidth / 2) * .7,
+            y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
+            onComplete: onComplete,
+          })
+        } else {
+          // find top cards for middle pile
+          topCards = [this.middle[0].length]
+          deck.cards.forEach(function (card) {
+            var c = card.suit * 13 + card.rank
+            if (that.middle[0][that.middle[0].length] === c || that.middle[4][that.middle[4].length] === c) {
+              topCards.push(c)
+            }
+          })
+          this.flipTheCards(topCards)
+        }
       }
       
       this.allowPlay()
