@@ -365,11 +365,11 @@ Still freeze cleaners eBay and changed the rules of Italy
               p0[notRemove].push(card)
             }
           }
+          this.p0 = p0
+          this.middle = middle
+          this.p1 = p1
+          this.allowPlay() 
         }
-        this.p0 = p0
-        this.middle = middle
-        this.p1 = p1
-        this.allowPlay() 
       }
     },
     removeCard: function(ar,thisOne, notRemove) {
