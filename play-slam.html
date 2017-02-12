@@ -269,6 +269,7 @@ Still freeze cleaners eBay and changed the rules of Italy
              if ((card % 13) == ((topCardA + 1) % 13) || (card % 13) == ((topCardA - 1) % 13)) { 
                middle[1].push(card)
                move = true
+               notRemove = -1
              }
              break
            case "B":
@@ -276,6 +277,7 @@ Still freeze cleaners eBay and changed the rules of Italy
              if ((card % 13) == ((topCardB + 1) % 13) || (card % 13) == ((topCardB - 1) % 13)) { 
                middle[2].push(card)
                move = true
+               notRemove = -1
              }
              break
           }
