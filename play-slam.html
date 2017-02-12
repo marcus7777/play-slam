@@ -166,6 +166,8 @@ Still freeze cleaners eBay and changed the rules of Italy
         var onComplete  = function () {
           that.deck.cards[topCards[0]].setSide('front')
           that.deck.cards[topCards[1]].setSide('front')
+          that.middle[1].push(that.middle[0].pop())
+          that.middle[2].push(that.middle[3].pop())
         }
         this.deck.cards[topCards[0]].animateTo({
           delay: 50,
