@@ -62,6 +62,8 @@ Still freeze cleaners eBay and changed the rules of Italy
       deck.queue(function (next) {
         deck.cards.forEach(function (card,i) {
           var hand 
+          
+          var onComplete = function (){}
           if (card.pos < 15) {
             hand = 0
           } else if (card.pos < 30) {
@@ -74,6 +76,9 @@ Still freeze cleaners eBay and changed the rules of Italy
             hand = 1
           } else {
             hand = 0
+            var onComplete = function (next){
+              next()
+            }
           }
             
           card.animateTo({
@@ -82,6 +87,7 @@ Still freeze cleaners eBay and changed the rules of Italy
             ease: 'quartOut',
             x: ((2/4) * window.innerWidth - window.innerWidth / 2),
             y: ((hand/1) * window.innerHeight - window.innerHeight / 2),
+            onComplete: onComplete,
           })
         })
         next()
