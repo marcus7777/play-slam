@@ -111,26 +111,26 @@ Still freeze cleaners eBay and changed the rules of Italy
             onComplete = function () {
               setTimeout(function () {
                 that.count = 6
-              }, 4000)
+              }, 3000)
               setTimeout(function () {
                 that.count = 5
-              }, 5000)
+              }, 4000)
               setTimeout(function () {
                 that.count = 4
-              }, 6000)
+              }, 5000)
               setTimeout(function () {
                 that.count = 3
-              }, 7100)
+              }, 6100)
               setTimeout(function () {
                 that.count = 2
-              }, 8300)
+              }, 7300)
               setTimeout(function () {
                 that.count = 1
-              }, 9600)
+              }, 8600)
               setTimeout(function () {
                 that.count = ""
                 that.allowPlay(deck)
-              }, 11200)
+              }, 9200)
             }
           }     
           card.animateTo({
@@ -181,37 +181,34 @@ Still freeze cleaners eBay and changed the rules of Italy
               card.disableFlipping()
             }
             card.enableDragging()
-            card.$el.addEventListener('mouseup', that.drop(c,that))
-            card.$el.addEventListener('touchend', that.drop(c,that))
+            if (!card.addedEL) {
+              card.addedEL = that.drop(c)
+              card.$el.addEventListener('mouseup', card.addedEL)
+              card.$el.addEventListener('touchend', card.addedEL)
+            }
           } else {
             card.disableDragging()
             card.disableFlipping()
-            that.removeEventListener(card.$el)
+            if (card.addedEL) {
+              card.$el.removeEventListener("mouseup",card.addedEL)
+              card.$el.removeEventListener("touchend",card.addedEL)
+            }
           }
         } else {
           card.disableDragging()
           card.disableFlipping()
-          if (that.isOnTop(middle,c)) {
-            that.removeEventListener(card.$el)
+          if (card.addedEL) {
+            card.$el.removeEventListener("mouseup",card.addedEL)
+            card.$el.removeEventListener("touchend",card.addedEL)
           }
-          
           if (middle[1].indexOf(c) !== -1 || middle[2].indexOf(c) !== -1) {
-            that.removeEventListener(card.$el).setSide('front')
+            card.setSide('front')
           }
         }
       })
       // update game
       console.log(p0)
       console.log(p1)
-    },
-    removeEventListener(el) {
-      if (el) {
-        var old_element = el
-        var new_element = old_element.cloneNode(true)
-        if (old_element.parentNode) {
-          return old_element.parentNode.replaceChild(new_element, old_element)
-        }
-      }
     },
     place: function(x,y,card){
         var p0 = this.p0
@@ -305,7 +302,8 @@ Still freeze cleaners eBay and changed the rules of Italy
         return accumulator
       },[])
     },
-    drop: function(picked,that){
+    drop: function(picked){
+      var that = this
       return function(event) {
         console.log(
           event.x,
