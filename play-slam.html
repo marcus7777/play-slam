@@ -39,7 +39,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var transform = prefix('transform')
       var translate = Deck.translate
       var $container = this.$.container
-      var deck = Deck()
+      this.deck = Deck()
       /* Game State */
       var gP0Cards = [[],[],[],[],[]]
       var gTable =   [[],[],   [],[]]
@@ -47,7 +47,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       
       deck.mount($container)
       
-      this.play(gP0Cards,gP1Cards,gTable,deck)
+      this.play(gP0Cards,gP1Cards,gTable,this.deck)
     },
     play: function(p0Cards, p1Cards, middle, deck){
       deck.queue(function (next) {
