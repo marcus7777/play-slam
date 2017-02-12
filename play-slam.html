@@ -261,13 +261,15 @@ Still freeze cleaners eBay and changed the rules of Italy
         if (card) {
           switch (to) {
            case "A":
-             if ((card % 13) == ((middle[1][middle[1].length - 1] + 1) % 13) || (card % 13) == ((middle[1][middle[1].length - 1] - 1) % 13)) { 
+             var topCardA = middle[1][middle[1].length - 1]
+             if ((card % 13) == ((topCardA + 1) % 13) || (card % 13) == ((topCardA - 1) % 13)) { 
                middle[1].push(card)
                move = true
              }
              break
            case "B":
-             if ((card % 13) == ((middle[2][middle[2].length - 1] + 1) % 13) || (card % 13) == ((middle[2][middle[2].length - 1] - 1) % 13)) { 
+             var topCardB = middle[2][middle[2].length - 1]
+             if ((card % 13) == (topCardB + 1) % 13) || (card % 13) == ((topCardB - 1) % 13)) { 
                middle[2].push(card)
                move = true
              }
