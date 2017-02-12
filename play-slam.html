@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link href="../deck-of-cards/example/example.css" rel="stylesheet" type="text/css">
 <script src="../deck-of-cards/dist/deck.js"></script>
 <!--
@@ -29,6 +30,9 @@ Still freeze cleaners eBay and changed the rules of Italy
     }
     </style>
     <div id="container">[[count]]</div>
+    <template is="dom-if" if="[[setReady]]">
+      <paper-button on-tap="press">Ready</paper-button>
+    </template>
   </template>
 </dom-module>
 <script>
@@ -168,6 +172,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           that.deck.cards[topCards[1]].setSide('front')
           that.middle[1].push(that.middle[0].pop())
           that.middle[2].push(that.middle[3].pop())
+          that.set("setReady", true)
         }
         this.deck.cards[topCards[0]].animateTo({
           delay: 50,
