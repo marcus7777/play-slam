@@ -209,7 +209,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       if (el) {
         var old_element = el
         var new_element = old_element.cloneNode(true)
-        old_element.parentNode.replaceChild(new_element, old_element)
+        if (old_element.parentNode) {
+          old_element.parentNode.replaceChild(new_element, old_element)
+        }
       }
     },
     place: function(x,y,card){
