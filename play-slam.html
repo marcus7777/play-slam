@@ -144,6 +144,9 @@ Still freeze cleaners eBay and changed the rules of Italy
             onComplete: onComplete,
           })
         })
+        that.p0 = p0Cards
+        that.middle = middle
+        that.p1 = p1Cards
         next()
       })
     },
@@ -165,28 +168,12 @@ Still freeze cleaners eBay and changed the rules of Italy
       })
       return onTop
     }, 
-    allowPlay: function(deck){
-      var that = this
-      var p0 =       [[],[],[],[],[]]
-      var middle =   [[],[],   [],[]]
-      var p1 =       [[],[],[],[],[]]
-      deck.cards.forEach(function (card) {
-         var pile = that.getPile(card.x,card.y)
-         var c = card.suit * 13 + card.rank
-         if        (pile == "0" || pile == "1" || pile == "2" || pile == "3" || pile == "4"){
-           "01234".indexOf(pile)
-           p0["01234".indexOf(pile)].push(c)
-         } else if (pile == "a" || pile == "A" || pile == "|" || pile == "B" || pile == "b"){
-           "aA|Bb".indexOf(pile)
-           middle["aABb".indexOf(pile)].push(c)
-         } else if (pile == "5" || pile == "6" || pile == "7" || pile == "8" || pile == "9"){
-           "56789".indexOf(pile)
-           p1["56789".indexOf(pile)].push(c)
-         }
-      })
-      
-      
-      deck.cards.forEach(function (card, i) {
+    allowPlay: function(){
+      var that =   this
+      var p0 =     this.p0
+      var middle = this.middle 
+      var p1 =     this.p1 
+      this.deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
         if (that.isinArray(p0, c) !== -1 || that.isinArray(p1, c) !== -1) {
           if (that.isOnTop(p0, c) || that.isOnTop(p1, c)) {
@@ -222,9 +209,11 @@ Still freeze cleaners eBay and changed the rules of Italy
       // update game
       console.log(p0)
       console.log(p1)
-      this.deck = deck
     },
-    place: function(x,y,card,deck,p0,p1,middle){
+    place: function(x,y,card){
+        var p0 = this.p0
+        var middle = this.middle
+        var p1 = this.p1
       /*
         Once a player has got rid of all of there cards 
         by moving them to the middle piles (A || B) 
@@ -296,7 +285,10 @@ Still freeze cleaners eBay and changed the rules of Italy
             }
           }
         }
-        this.allowPlay(deck) 
+        this.p0 = p0
+        this.middle = middle
+        this.p1 = p1
+        this.allowPlay() 
       }
     },
     removeCard: function(ar,thisOne, notRemove) {
@@ -317,7 +309,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           event.y,
           picked
         )
-        that.place(event.x,event.y, picked,that.deck,that.p0,that.p1,that.middle)
+        that.place(event.x,event.y, picked)
       }
     },
     getPile: function(x,y){
