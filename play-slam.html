@@ -38,15 +38,13 @@ Still freeze cleaners eBay and changed the rules of Italy
       var prefix = Deck.prefix
       var transform = prefix('transform')
       var translate = Deck.translate
-      var $container = this.$.container
       this.deck = Deck()
       /* Game State */
       var gP0Cards = [[],[],[],[],[]]
       var gTable =   [[],[],   [],[]]
       var gP1Cards = [[],[],[],[],[]]
       
-      deck.mount($container)
-      
+      this.deck.mount(this.$.container)
       this.play(gP0Cards,gP1Cards,gTable,this.deck)
     },
     play: function(p0Cards, p1Cards, middle, deck){
