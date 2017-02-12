@@ -171,7 +171,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var middle =   [[],[],   [],[]]
       var p1 =       [[],[],[],[],[]]
       deck.cards.forEach(function (card) {
-         var pile = this.getPile(card.x,card.y)
+         var pile = that.getPile(card.x,card.y)
          var c = card.suit * 13 + card.rank
          if        (pile == "0" || pile == "1" || pile == "2" || pile == "3" || pile == "4"){
            "01234".indexOf(pile)
