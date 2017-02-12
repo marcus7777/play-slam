@@ -59,6 +59,19 @@ Still freeze cleaners eBay and changed the rules of Italy
         deck.shuffle()
         next()
       })
+      deck.queue(function (next) {
+        deck.cards.forEach(function (card,i) {
+          card.animateTo({
+            delay: 50,
+            duration: 50 + card.pos * 20,
+            ease: 'quartOut',
+            x: ((2/4) * window.innerWidth - window.innerWidth / 2),
+            y: (((card.pos % 2)/1) * window.innerHeight - window.innerHeight / 2),
+            onComplete: onComplete,
+          })
+        })
+        next()
+      })
       var that = this
       var plan = [
         [0,1], [1,0], [2,0], [3,0], [4,0],
