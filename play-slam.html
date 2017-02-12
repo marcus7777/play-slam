@@ -163,18 +163,18 @@ Still freeze cleaners eBay and changed the rules of Italy
     flipTheCards: function(topCards){
       var that = this
       if (topCards) {
-        onComplete  = function () {
+        var onComplete  = function () {
           that.deck.cards[topCards[0]].setSide('front')
           that.deck.cards[topCards[1]].setSide('front')
         }
         this.deck.cards[topCards[0]].animateTo({
-          duration: 500,
+          duration: 1500,
           ease: 'quartOut',
           x: ((1/4) * window.innerWidth - window.innerWidth / 2) * .7,
           y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
         })
         this.deck.cards[topCards[1]].animateTo({
-          duration: 500,
+          duration: 1500,
           ease: 'quartOut',
           x: ((3/4) * window.innerWidth - window.innerWidth / 2) * .7,
           y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
