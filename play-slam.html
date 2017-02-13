@@ -313,16 +313,17 @@ Still freeze cleaners eBay and changed the rules of Italy
        */
       var player
       var to = this.getPile(x,y)
-      var fromP0
-      var fromP1
+      var fromP0 = this.isinArray(p0,card))
+      var fromP1 = this.isinArray(p1,card))
       var from
       var move = false
       var notRemove = -1
       var i
-      if ((fromP1 = this.isinArray(p1,card)) !== -1) {
+      if (fromP1 !== -1) {
         from = "56789"[fromP1]
         if (from !== to) {
-          if (i = "56789".indexOf(to) !== -1) {
+          i = "56789".indexOf(to)
+          if (i !== -1) {
             if (p1[i].length == 0 || (card % 13) == ((p1[i][p1[i].length - 1]) % 13)) {
               notRemove = fromP1
               move = true
@@ -330,10 +331,11 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
         }
         player = 1
-      } else if ((fromP0 = this.isinArray(p0,card)) !== -1) {
+      } else if (fromP0 !== -1) {
         from = "01234"[fromP0]
         if (from !== to) {
-          if (i = "01234".indexOf(to) !== -1) {
+          i = "01234".indexOf(to)
+          if (i !== -1) {
             if (p0[i].length == 0 || (card % 13) == ((p0[i][p0[i].length - 1]) % 13)) {
               notRemove = fromP0
               move = true
