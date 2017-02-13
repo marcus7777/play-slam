@@ -231,6 +231,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
         } else {
           // find top cards for middle pile
+          topCards = []
           this.deck.cards.forEach(function (card, i) {
             var c = card.suit * 13 + card.rank
             if (that.middle[0][that.middle[0].length - 1] === c || that.middle[3][that.middle[3].length - 1] === c) {
