@@ -192,7 +192,7 @@ Still freeze cleaners eBay and changed the rules of Italy
     isOnTop: function (ar,test) { 
       var onTop = -1
       ar.forEach(function (arr,i) {
-        if (arr.length && arr[arr.length - 1] == test) {
+        if (arr.length && arr[arr.length - 1] === test) {
           onTop = i
         }
       })
