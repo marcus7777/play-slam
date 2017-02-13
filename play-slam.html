@@ -323,7 +323,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         from = "56789"[fromP1]
         if (from !== to) {
           if (i = "56789".indexOf(to) !== -1) {
-            if (p1["56789".indexOf(to)].length == 0 || (card % 13) == ((p1["56789".indexOf(to)][p1["56789".indexOf(to)].length - 1]) % 13)) {
+            if (p1[i].length == 0 || (card % 13) == ((p1[i][p1[i].length - 1]) % 13)) {
               notRemove = fromP1
               move = true
             }
@@ -334,7 +334,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         from = "01234"[fromP0]
         if (from !== to) {
           if (i = "01234".indexOf(to) !== -1) {
-            if (p0["01234".indexOf(to)].length == 0 || (card % 13) == ((p0["01234".indexOf(to)][p0["01234".indexOf(to)].length - 1]) % 13)) {
+            if (p0[i].length == 0 || (card % 13) == ((p0[i][p0[i].length - 1]) % 13)) {
               notRemove = fromP0
               move = true
             }
