@@ -265,18 +265,18 @@ Still freeze cleaners eBay and changed the rules of Italy
               card.$el.addEventListener('touchend', card.addedEL)
             }
           } else {
-            card.disableDragging()
-            card.disableFlipping()
             if (typeof card.addedEL === "function") {
+              card.disableDragging()
+              card.disableFlipping()
               card.$el.removeEventListener("mouseup",card.addedEL)
               card.$el.removeEventListener("touchend",card.addedEL)
               delete(card.addedEL)
             }
           }
         } else {
-          card.disableDragging()
-          card.disableFlipping()
           if (typeof card.addedEL === "function") {
+            card.disableDragging()
+            card.disableFlipping()
             card.$el.removeEventListener("mouseup",card.addedEL)
             card.$el.removeEventListener("touchend",card.addedEL)
             delete(card.addedEL)
