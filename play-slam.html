@@ -260,6 +260,8 @@ Still freeze cleaners eBay and changed the rules of Italy
       var p1 =     this.p1 
       this.deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
+        card.$el.style.zIndex = card.z
+        
         if (that.isinArray(p0, c) !== -1 || that.isinArray(p1, c) !== -1) {
           if (that.isOnTop(p0, c) !== -1 || that.isOnTop(p1, c) !== -1 ) {
             if (card.side != "front") {
