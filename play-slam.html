@@ -218,6 +218,8 @@ Still freeze cleaners eBay and changed the rules of Italy
             card.setSide('front')
             card.z = that.middle[to].length
             that.middle[to].push(that.middle[from].pop())
+            that.set("middle", that.middle)
+            that.allowPlay()
             that.set("setReady", true)
           }  
           var halfWay = (fromX + toX) / 2
@@ -236,7 +238,6 @@ Still freeze cleaners eBay and changed the rules of Italy
             x: ((toX/4) * window.innerWidth - window.innerWidth / 2) * .7,
             y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
             onComplete: function() {
-              that.set("middle", this.middle)
               that.allowPlay()
             },
           })
