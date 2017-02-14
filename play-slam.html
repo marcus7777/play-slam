@@ -208,47 +208,47 @@ Still freeze cleaners eBay and changed the rules of Italy
     isReady: function(){
       this.flipTheCards()
     },
-    flipTheCards: function(topCards){
+    flipTheCards: function(){
       var that = this
-      if (this.middle[0].length || this.middle[3].length) {
-        if (topCards) {
-          if (topCards.length === 2) {
+      var pile_a = this.middle[0].length
+      var pile_b = this.middle[3].length
+      
+      if (pile_a || pile_b) {
+        // find top cards for middle pile
+        this.deck.cards.forEach(function (card, i) {
+          var c = card.suit * 13 + card.rank
+          function moveCard(from, to ,fromX ,toX){
             var onComplete  = function () {
-              that.deck.cards[topCards[0]].setSide('front')
-              that.deck.cards[topCards[1]].setSide('front')
-              that.middle[1].push(that.middle[0].pop())
-              that.middle[2].push(that.middle[3].pop())
+              card.setSide('front')
+              card.z = that.middle[to].length
+              that.middle[to].push(that.middle[from].pop())
               that.set("setReady", true)
             }
-            this.deck.cards[topCards[0]].z = that.middle[2].length
-            this.deck.cards[topCards[0]].animateTo({
+            
+            var halfWay = (fromX +toX) /2
+            card.animateTo({
               delay: 50,
-              duration: 1500,
+              duration: 500,
               ease: 'quartOut',
-              x: ((3/4) * window.innerWidth - window.innerWidth / 2) * .7,
-              y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
-            })
-            this.deck.cards[topCards[1]].z = that.middle[2].length
-            this.deck.cards[topCards[1]].animateTo({
-              delay: 50,
-              duration: 1500,
-              ease: 'quartOut',
-              x: ((1/4) * window.innerWidth - window.innerWidth / 2) * .7,
+              x: ((halfWay/4) * window.innerWidth - window.innerWidth / 2) * .7,
               y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
               onComplete: onComplete,
             })
+            card.animateTo({
+              delay: 550,
+              duration: 500,
+              ease: 'quartOut',
+              x: ((toX/4) * window.innerWidth - window.innerWidth / 2) * .7,
+              y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
+            })
           }
-        } else {
-          // find top cards for middle pile
-          topCards = []
-          this.deck.cards.forEach(function (card, i) {
-            var c = card.suit * 13 + card.rank
-            if (that.middle[0][that.middle[0].length - 1] === c || that.middle[3][that.middle[3].length - 1] === c) {
-              topCards.push(i)
-            }
-          })
-          this.flipTheCards(topCards)
-        }
+          if (that.middle[0][that.middle[0].length - 1] === c) {
+            moveCard(0,1,0,1)
+          }
+          if (that.middle[3][that.middle[3].length - 1] === c) {
+            moveCard(3,2,4,3)
+          }
+        })
       }
       
       this.allowPlay()
