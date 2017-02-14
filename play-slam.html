@@ -374,11 +374,16 @@ Still freeze cleaners eBay and changed the rules of Italy
           } else {
             p0 = this.removeCard(p0,card)
           }
+        } else {
+          // move back
+          if (from !== to) {
+            
+          }
         }
         this.p0 = p0
         this.middle = middle
         this.p1 = p1
-        this.allowPlay() 
+        this.allowPlay()
       }
     },
     removeCard: function(ar,thisOne, notRemove) {
@@ -415,7 +420,9 @@ Still freeze cleaners eBay and changed the rules of Italy
         theX = 3
       } else if (x < ( (5/4) * window.innerWidth) * .7) {
         theX = 4
-      } 
+      } else {
+        return "|"
+      }
       var theY
       if (y < (((1/2) * window.innerHeight) *.6)) {
         theY = 0
@@ -423,7 +430,9 @@ Still freeze cleaners eBay and changed the rules of Italy
         theY = 1
       } else if (y < (((3/2) * window.innerHeight) *.6)) {
         theY = 2
-      } 
+      } else {
+        return "|"
+      }
       
       return theBoard[theY][theX]
     },
