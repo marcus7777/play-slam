@@ -220,18 +220,20 @@ Still freeze cleaners eBay and changed the rules of Italy
               that.middle[2].push(that.middle[3].pop())
               that.set("setReady", true)
             }
+            this.deck.cards[topCards[0]].z = that.middle[2].length
             this.deck.cards[topCards[0]].animateTo({
               delay: 50,
               duration: 1500,
               ease: 'quartOut',
-              x: ((1/4) * window.innerWidth - window.innerWidth / 2) * .7,
+              x: ((3/4) * window.innerWidth - window.innerWidth / 2) * .7,
               y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
             })
+            this.deck.cards[topCards[1]].z = that.middle[2].length
             this.deck.cards[topCards[1]].animateTo({
               delay: 50,
               duration: 1500,
               ease: 'quartOut',
-              x: ((3/4) * window.innerWidth - window.innerWidth / 2) * .7,
+              x: ((1/4) * window.innerWidth - window.innerWidth / 2) * .7,
               y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
               onComplete: onComplete,
             })
