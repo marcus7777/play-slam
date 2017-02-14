@@ -288,9 +288,6 @@ Still freeze cleaners eBay and changed the rules of Italy
             card.$el.removeEventListener("touchend",card.addedEL)
             delete(card.addedEL)
           }
-          if (middle[1].indexOf(c) !== -1 || middle[2].indexOf(c) !== -1) {
-            card.setSide('front')
-          }
         }
       })
       // update game
@@ -397,11 +394,6 @@ Still freeze cleaners eBay and changed the rules of Italy
     drop: function(picked){
       var that = this
       return function(event) {
-        console.log(
-          event.x,
-          event.y,
-          picked
-        )
         that.place(event.x,event.y, picked)
       }
     },
