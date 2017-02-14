@@ -210,48 +210,44 @@ Still freeze cleaners eBay and changed the rules of Italy
     },
     flipTheCards: function(){
       var that = this
-      var pile_a = this.middle[0].length
-      var pile_b = this.middle[3].length
-      
-      if (pile_a || pile_b) {
-        // find top cards for middle pile
-        this.deck.cards.forEach(function (card, i) {
-          var c = card.suit * 13 + card.rank
-          function moveCard(from, to ,fromX ,toX){
-            var onComplete  = function () {
-              card.setSide('front')
-              card.z = that.middle[to].length
-              that.middle[to].push(that.middle[from].pop())
-              that.set("setReady", true)
-            }
-            
-            var halfWay = (fromX +toX) /2
-            card.animateTo({
-              delay: 50,
-              duration: 500,
-              ease: 'quartOut',
-              x: ((halfWay/4) * window.innerWidth - window.innerWidth / 2) * .7,
-              y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
-              onComplete: onComplete,
-            })
-            card.animateTo({
-              delay: 550,
-              duration: 500,
-              ease: 'quartOut',
-              x: ((toX/4) * window.innerWidth - window.innerWidth / 2) * .7,
-              y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
-            })
-          }
-          if (that.middle[0][that.middle[0].length - 1] === c) {
-            moveCard(0,1,0,1)
-          }
-          if (that.middle[3][that.middle[3].length - 1] === c) {
-            moveCard(3,2,4,3)
-          }
-        })
-      }
-      this.set("middle", this.middle)
-      this.allowPlay()
+      // find top cards for middle pile
+      this.deck.cards.forEach(function (card, i) {
+        var c = card.suit * 13 + card.rank
+        function moveCard(from, to ,fromX ,toX){
+          var onComplete  = function () {
+            card.setSide('front')
+            card.z = that.middle[to].length
+            that.middle[to].push(that.middle[from].pop())
+            that.set("setReady", true)
+          }  
+          var halfWay = (fromX + toX) / 2
+          card.animateTo({
+            delay: 50,
+            duration: 500,
+            ease: 'quartOut',
+            x: ((halfWay/4) * window.innerWidth - window.innerWidth / 2) * .7,
+            y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
+            onComplete: onComplete,
+          })
+          card.animateTo({
+            delay: 550,
+            duration: 500,
+            ease: 'quartOut',
+            x: ((toX/4) * window.innerWidth - window.innerWidth / 2) * .7,
+            y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) - 30,
+            onComplete: function() {
+              that.set("middle", this.middle)
+              that.allowPlay()
+            },
+          })
+        }
+        if (that.middle[0][that.middle[0].length - 1] === c) {
+          moveCard(0,1,0,1)
+        }
+        if (that.middle[3][that.middle[3].length - 1] === c) {
+          moveCard(3,2,4,3)
+        }
+      })
     },
     allowPlay: function(){
       var that =   this
