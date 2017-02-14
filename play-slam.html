@@ -250,6 +250,14 @@ Still freeze cleaners eBay and changed the rules of Italy
         }
       })
     },
+    getHeight: function(ar,c){
+      var arrIndex = this.isinArray()
+      if (arrIndex !== -1) {
+        return ar[arrIndex].indexOf(c)
+      } else {
+        return -1
+      }
+    },
     allowPlay: function(){
       var that =   this
       var p0 =     this.p0
@@ -257,7 +265,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var p1 =     this.p1 
       this.deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
-        card.$el.style.zIndex = card.z
+        card.$el.style.zIndex = card.z = that.getHeight(p0.concat(middle, p1),c)
         
         if (that.isinArray(p0, c) !== -1 || that.isinArray(p1, c) !== -1) {
           if (that.isOnTop(p0, c) !== -1 || that.isOnTop(p1, c) !== -1 ) {
