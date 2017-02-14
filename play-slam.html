@@ -325,8 +325,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           i = "56789".indexOf(to)
           if (i !== -1) {
             if (p1[i].length == 0 || (card % 13) == ((p1[i][p1[i].length - 1]) % 13)) {
-              notRemove = fromP1
-              move = true
+              p1[i].push(p1[fromP1].pop())
             }
           }
         }
@@ -337,8 +336,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           i = "01234".indexOf(to)
           if (i !== -1) {
             if (p0[i].length == 0 || (card % 13) == ((p0[i][p0[i].length - 1]) % 13)) {
-              notRemove = fromP0
-              move = true
+              p0[i].push(p0[fromP0].pop())
             }
           }
         }
@@ -354,7 +352,6 @@ Still freeze cleaners eBay and changed the rules of Italy
              if ((card % 13) == ((topCardA + 1) % 13) || (card % 13) == ((topCardA - 1) % 13)) { 
                middle[1].push(card)
                move = true
-               notRemove = -1
              }
              break
            case "B":
@@ -362,7 +359,6 @@ Still freeze cleaners eBay and changed the rules of Italy
              if ((card % 13) == ((topCardB + 1) % 13) || (card % 13) == ((topCardB - 1) % 13)) { 
                middle[2].push(card)
                move = true
-               notRemove = -1
              }
              break
           }
@@ -370,20 +366,14 @@ Still freeze cleaners eBay and changed the rules of Italy
         if (move) {
           if (player == 1) {
             p1 = this.removeCard(p1,card)
-            if (notRemove != -1) {
-              p1[notRemove].push(card)
-            }
           } else {
             p0 = this.removeCard(p0,card)
-            if (notRemove != -1) {
-              p0[notRemove].push(card)
-            }
           }
-          this.p0 = p0
-          this.middle = middle
-          this.p1 = p1
-          this.allowPlay() 
         }
+        this.p0 = p0
+        this.middle = middle
+        this.p1 = p1
+        this.allowPlay() 
       }
     },
     removeCard: function(ar,thisOne, notRemove) {
