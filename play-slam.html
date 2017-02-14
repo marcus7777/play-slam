@@ -265,6 +265,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               card.enableFlipping()
             } else {
               card.disableFlipping()
+              console.log(that.getPile(c,card.x,card.y))
             }
             card.enableDragging()
             if (!card.addedEL) {
@@ -276,8 +277,8 @@ Still freeze cleaners eBay and changed the rules of Italy
             if (typeof card.addedEL === "function") {
               card.disableDragging()
               card.disableFlipping()
-              card.$el.removeEventListener("mouseup",card.addedEL)
-              card.$el.removeEventListener("touchend",card.addedEL)
+              card.$el.removeEventListener("mouseup", card.addedEL)
+              card.$el.removeEventListener("touchend", card.addedEL)
               delete(card.addedEL)
             }
           }
@@ -285,8 +286,8 @@ Still freeze cleaners eBay and changed the rules of Italy
           if (typeof card.addedEL === "function") {
             card.disableDragging()
             card.disableFlipping()
-            card.$el.removeEventListener("mouseup",card.addedEL)
-            card.$el.removeEventListener("touchend",card.addedEL)
+            card.$el.removeEventListener("mouseup", card.addedEL)
+            card.$el.removeEventListener("touchend", card.addedEL)
             delete(card.addedEL)
           }
         }
@@ -300,9 +301,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.p1 =     p1
     },
     place: function(x,y,card){
-        var p0 = this.p0
-        var middle = this.middle
-        var p1 = this.p1
+      var p0 = this.p0
+      var middle = this.middle
+      var p1 = this.p1
       /*
         Once a player has got rid of all of there cards 
         by moving them to the middle piles (A || B) 
