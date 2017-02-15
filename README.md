@@ -26,27 +26,38 @@ Moves posib - normally two or three moves like:
 Now we can just send 1,2 or 3
 
 so the game state can be sent with:
-3940J54QJ8642725Q0QJ4838300167KJ715969289KQ316K15K27111311342...
+3940J54QJ8642725Q0QJ4838300167KJ715969289KQ316K15K27110311342...
 ```
 decode
 ```
-3940J p0
-54QJ
-864
-27
-2
-5Q0QJ p1
-4838
-300
-16
-7
+3940J   // 0
+54QJ    // 1
+864     // 2
+27      // 3
+2       // 4
+5Q0QJ   // 5
+4838    // 6
+300     // 7
+16      // 8
+7       // 9
 KJ71596928 a
 9          A
 KQ316K15K2 b
 7          B
+            <----\
+Posablie moves    \
+0 to 1 that 0 to A | 
+1 to 0             |
+7 to A             |
+6 to B             |
+["0A","7A","6B"]   |
+                   |
+Moves              |
+1 11311342...      |
+7A                 |
+                    \
+Find posablie moves>/
 
-Moves
-111311342...
 
 ```
 long
