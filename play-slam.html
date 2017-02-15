@@ -384,11 +384,9 @@ Still freeze cleaners eBay and changed the rules of Italy
         } else {
           // move back
           if (from && to && from !== to) {
-            console.log(card, card % 13, this.getPile(x,y))
             this.deck.cards.forEach(function (theCard) {
               var c = theCard.suit * 13 + theCard.rank
-              
-              if (c === card) {
+              if (c === card && 0) {
                 theCard.animateTo({
                   delay: 50,
                   duration: 750,
