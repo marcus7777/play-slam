@@ -387,15 +387,15 @@ Still freeze cleaners eBay and changed the rules of Italy
             console.log(card, card % 13, this.getPile(x,y))
             this.deck.cards.forEach(function (theCard) {
               var c = theCard.suit * 13 + theCard.rank
+              
               if (c === card) {
-                
-          theCard.animateTo({
-            delay: 50,
-            duration: 750,
-            ease: 'quartOut',
-            x: ((3/4) * window.innerWidth - window.innerWidth / 2) * .7,
-            y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
-          })
+                theCard.animateTo({
+                  delay: 50,
+                  duration: 750,
+                  ease: 'quartOut',
+                  x: ((2/4) * window.innerWidth - window.innerWidth / 2) * .7,
+                  y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
+                })
               }
             })
           }
