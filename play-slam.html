@@ -265,7 +265,6 @@ Still freeze cleaners eBay and changed the rules of Italy
               card.enableFlipping()
             } else {
               card.disableFlipping()
-              console.log(c, c % 13, that.getPile(card.x+10,card.y+10))
             }
             card.enableDragging()
             if (!card.addedEL) {
@@ -378,7 +377,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         } else {
           // move back
           if (from !== to) {
-            
+            console.log(card, card % 13, this.getPile(x,y))
           }
         }
         this.p0 = p0
