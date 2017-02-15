@@ -27,6 +27,26 @@ Now we can just send 1,2 or 3
 
 so the game state can be sent with:
 3940J54QJ8642725Q0QJ4838300167KJ715969289KQ316K15K27111311342...
+```
+decode
+```
+3940J p0
+54QJ
+864
+27
+2
+5Q0QJ p1
+4838
+300
+16
+7
+KJ71596928 a
+9          A
+KQ316K15K2 b
+7          B
+
+Moves
+111311342...
 
 ```
 long
