@@ -300,9 +300,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.p1 =     p1
     },
     place: function(x,y,card){
-      var p0 = this.p0
+      var p0 =     this.p0
       var middle = this.middle
-      var p1 = this.p1
+      var p1 =     this.p1
       /*
         Once a player has got rid of all of there cards 
         by moving them to the middle piles (A || B) 
@@ -383,7 +383,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
         } else {
           // move back
-          if (from !== to) {
+          if (from && to && from !== to) {
             console.log(card, card % 13, this.getPile(x,y))
             this.deck.cards.forEach(function (theCard) {
               var c = theCard.suit * 13 + theCard.rank
