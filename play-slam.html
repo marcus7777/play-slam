@@ -265,7 +265,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               card.enableFlipping()
             } else {
               card.disableFlipping()
-              console.log(c,that.getPile(card.x,card.y))
+              console.log(c, c % 13, that.getPile(card.x+10,card.y+10))
             }
             card.enableDragging()
             if (!card.addedEL) {
