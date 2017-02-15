@@ -165,8 +165,8 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
           
           card.animateTo({
-            delay: 50,
-            duration: 500,
+            delay: 500 + (card.pos- timing) * 75,
+            duration: 500 + card.pos * 27,
             ease: 'quartOut',
             x: ((theX/4) * window.innerWidth - window.innerWidth / 2) * .7,
             y: (((theY/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
@@ -390,8 +390,8 @@ Still freeze cleaners eBay and changed the rules of Italy
               if (c === card) {
                 
           card.animateTo({
-            delay: 500 + (card.pos- timing) * 75,
-            duration: 500 + card.pos * 27,
+            delay: 50,
+            duration: 750,
             ease: 'quartOut',
             x: ((3/4) * window.innerWidth - window.innerWidth / 2) * .7,
             y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
