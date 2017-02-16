@@ -322,6 +322,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var fromP1 = this.isinArray(p1,card)
       var from
       var move = false
+      var innerMove = false
       var notRemove = -1
       var i
       var theY = 0
@@ -336,10 +337,10 @@ Still freeze cleaners eBay and changed the rules of Italy
           if (i !== -1) {
             if (p1[i].length == 0 || (card % 13) == ((p1[i][p1[i].length - 1]) % 13)) {
               p1[i].push(p1[fromP1].pop())
+              innerMove = true
             }
           }
         }
-        player = 1
       } else if (fromP0 !== -1) {
         from = "01234"[fromP0]
         if (from !== to) {
@@ -348,6 +349,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           if (i !== -1) {
             if (p0[i].length == 0 || (card % 13) == ((p0[i][p0[i].length - 1]) % 13)) {
               p0[i].push(p0[fromP0].pop())
+              innerMove = true
             }
           }
         }
@@ -381,12 +383,12 @@ Still freeze cleaners eBay and changed the rules of Italy
           } else {
             p0 = this.removeCard(p0,card)
           }
-        } else {
+        } else if (!innerMove) {
           // move back
           if (from && to && from !== to) {
             this.deck.cards.forEach(function (theCard) {
               var c = theCard.suit * 13 + theCard.rank
-              if (c === card && 0) {
+              if (c === card) {
                 theCard.animateTo({
                   delay: 50,
                   duration: 750,
