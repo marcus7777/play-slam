@@ -205,7 +205,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       // find top cards for middle pile
       this.deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
-        function moveCard(from, to ,fromX ,toX){
+        function moveCard(from, to, fromX ,toX){
           var onComplete  = function () {
             card.setSide('front')
             card.z = that.middle[to].length
@@ -391,8 +391,8 @@ Still freeze cleaners eBay and changed the rules of Italy
                   delay: 50,
                   duration: 750,
                   ease: 'quartOut',
-                  x: ((2/4) * window.innerWidth - window.innerWidth / 2) * .7,
-                  y: (((1/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
+                  x: ((theX/4) * window.innerWidth - window.innerWidth / 2) * .7,
+                  y: (((theY/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
                 })
               }
             })
