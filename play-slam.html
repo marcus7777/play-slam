@@ -331,21 +331,24 @@ Still freeze cleaners eBay and changed the rules of Italy
       
       if (fromP1 !== -1) {
         from = "56789"[fromP1]
+        theX = +fromP1
+        theY = 2
         if (from !== to) {
           i = "56789".indexOf(to)
-          theX = +i
           if (i !== -1) {
             if (p1[i].length == 0 || (card % 13) == ((p1[i][p1[i].length - 1]) % 13)) {
               p1[i].push(p1[fromP1].pop())
               innerMove = true
+              
             }
           }
         }
       } else if (fromP0 !== -1) {
         from = "01234"[fromP0]
+        theX = +fromP0
+        theY = 2
         if (from !== to) {
           i = "01234".indexOf(to)
-          theX = +i
           if (i !== -1) {
             if (p0[i].length == 0 || (card % 13) == ((p0[i][p0[i].length - 1]) % 13)) {
               p0[i].push(p0[fromP0].pop())
@@ -367,6 +370,7 @@ Still freeze cleaners eBay and changed the rules of Italy
                middle[1].push(card)
                move = true
              }
+             theX = 1
              break
            case "B":
              var topCardB = middle[2][middle[2].length - 1]
@@ -374,6 +378,7 @@ Still freeze cleaners eBay and changed the rules of Italy
                middle[2].push(card)
                move = true
              }
+             theX = 3
              break
           }
         }  
