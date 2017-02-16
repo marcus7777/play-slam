@@ -398,15 +398,15 @@ Still freeze cleaners eBay and changed the rules of Italy
             })
           }
         }
-              // update game
+      }
+                    // update game
       console.log(p0)
       console.log(middle)
       console.log(p1)
-        this.set("p0", p0.map(function(ar) {return ar}))
-        this.set("middle", middle.map(function(ar) {return ar}))
-        this.set("p1", p1.map(function(ar) {return ar}))
-        this.allowPlay()
-      }
+      this.set("p0", p0.map(function(ar) {return ar}))
+      this.set("middle", middle.map(function(ar) {return ar}))
+      this.set("p1", p1.map(function(ar) {return ar}))
+      this.allowPlay()
     },
     removeCard: function(ar,thisOne, notRemove) {
       return ar.reduce(function (accumulator, currentValue) {
