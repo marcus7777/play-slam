@@ -327,7 +327,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var i
       var moveBackToTheY = 0
       var moveBackToTheX = 2
-      var yShift = this.getHeight(p0.concat(middle, p1),card) * 10
+      var yShift = (this.getHeight(p0.concat(middle, p1),card)+1) * 10
       
       if (fromP1 !== -1) {
         player = 1
@@ -395,6 +395,7 @@ Still freeze cleaners eBay and changed the rules of Italy
                 theCard.animateTo({
                   delay: 50,
                   duration: 750,
+                  rot:theCard.rot +180,
                   ease: 'quartOut',
                   x: ((moveBackToTheX/4) * window.innerWidth - window.innerWidth / 2) * .7,
                   y: (((moveBackToTheY/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
