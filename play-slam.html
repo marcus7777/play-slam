@@ -332,7 +332,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       if (fromP1 !== -1) {
         player = 1
         from = "56789"[fromP1]
-        theX = +fromP1
+        theX = fromP1
         theY = 2
         if (from !== to) {
           i = "56789".indexOf(to)
@@ -347,8 +347,8 @@ Still freeze cleaners eBay and changed the rules of Italy
       } else if (fromP0 !== -1) {
         player = 0
         from = "01234"[fromP0]
-        theX = +fromP0
-        theY = 2
+        theX = fromP0
+        theY = 0
         if (from !== to) {
           i = "01234".indexOf(to)
           if (i !== -1) {
@@ -407,7 +407,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
         }
       }
-                    // update game
+      // update game
       console.clear()
       console.log(p0)
       console.log(middle)
