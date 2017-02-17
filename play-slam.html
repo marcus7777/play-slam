@@ -264,7 +264,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         card.enableDragging()
         if (that.isinArray(p0, c) !== -1 || that.isinArray(p1, c) !== -1) {
           if (that.isOnTop(p0, c) !== -1 || that.isOnTop(p1, c) !== -1 ) {
-            if (card.side != "front") {
+            if (card.side === "front") {
               card.disableFlipping()
             }
             if (!card.addedEL) {
