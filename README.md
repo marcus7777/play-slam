@@ -8,7 +8,7 @@ data stream two a fast and long:
 
 fast
 ```
-Starting deck 1234567890JQK1234567890JQK1234567890JQK1234567890JQK // dropping soots
+Starting deck 1234567890JQK1234567890JQK1234567890JQK1234567890JQK // dropping suits
 
 list all posablie moves:
   table:
@@ -23,7 +23,7 @@ Moves to concider
 Moves posib - normally two or three moves like:
 ["1A","3A","8B"]
 
-Now we can just send 1,2 or 3
+Now we can just send 0,1 or 2
 
 so the game state can be sent with:
 3940J54QJ8642725Q0QJ4838300167KJ715969289KQ316K15K27110311342...
