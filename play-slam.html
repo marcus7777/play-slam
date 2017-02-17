@@ -104,6 +104,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var timing = 0
       deck.queue(function (next) {
         deck.cards.forEach(function (card,i) {
+          
           var c = card.suit * 13 + card.rank
           var theX
           var theY
@@ -172,6 +173,7 @@ Still freeze cleaners eBay and changed the rules of Italy
             y: (((theY/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
             onComplete: onComplete,
           })
+          
         })
         that.p0 = p0Cards
         that.middle = middle
@@ -256,6 +258,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       var middle = this.middle 
       var p1 =     this.p1 
       this.deck.cards.forEach(function (card, i) {
+        if (card.side != "front") {
+          card.enableFlipping()
+        }
         var c = card.suit * 13 + card.rank
         card.$el.style.zIndex = that.getHeight(p0.concat(middle, p1),c)
         
