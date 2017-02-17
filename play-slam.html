@@ -258,38 +258,33 @@ Still freeze cleaners eBay and changed the rules of Italy
       var middle = this.middle 
       var p1 =     this.p1 
       this.deck.cards.forEach(function (card, i) {
-        if (card.side != "front") {
-          card.enableFlipping()
-        }
         var c = card.suit * 13 + card.rank
         card.$el.style.zIndex = that.getHeight(p0.concat(middle, p1),c)
-        
+        card.enableFlipping()
+        card.enableDragging()
         if (that.isinArray(p0, c) !== -1 || that.isinArray(p1, c) !== -1) {
           if (that.isOnTop(p0, c) !== -1 || that.isOnTop(p1, c) !== -1 ) {
             if (card.side != "front") {
-              card.enableFlipping()
-            } else {
               card.disableFlipping()
             }
-            card.enableDragging()
             if (!card.addedEL) {
               card.addedEL = that.drop(c)
               card.$el.addEventListener('mouseup', card.addedEL)
               card.$el.addEventListener('touchend', card.addedEL)
             }
           } else {
+            card.disableDragging()
+            card.disableFlipping()
             if (typeof card.addedEL === "function") {
-              card.disableDragging()
-              card.disableFlipping()
               card.$el.removeEventListener("mouseup", card.addedEL)
               card.$el.removeEventListener("touchend", card.addedEL)
               delete(card.addedEL)
             }
           }
         } else {
+          card.disableDragging()
+          card.disableFlipping()
           if (typeof card.addedEL === "function") {
-            card.disableDragging()
-            card.disableFlipping()
             card.$el.removeEventListener("mouseup", card.addedEL)
             card.$el.removeEventListener("touchend", card.addedEL)
             delete(card.addedEL)
