@@ -1,5 +1,11 @@
 # play-slam
+one round working beta test it:
+[here](https://open-elements.org/bower_components/play-slam/demo.html)
+
+[bugs](https://github.com/marcus7777/play-slam/issues/)
+
 A game of cards I played with my daughter's. We are making this game and therefore we are making the rules the same as we played then.
+
 
 Thank You to https://github.com/pakastin/deck-of-cards/
 
