@@ -4,7 +4,7 @@ one round working beta test it:
 
 [bugs](https://github.com/marcus7777/play-slam/issues/)
 
-A game of cards I played with my daughter's. We are making this game and therefore we are making the rules the same as we played then.
+A game of cards I played with my daughter's. We are making this game and therefore we are making the rules the same as we played them.
 
 
 Thank You to https://github.com/pakastin/deck-of-cards/
