@@ -275,7 +275,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               card.addedELmove = that.drop(c)
               card.$el.addEventListener('mouseup', card.addedEL)
               card.$el.addEventListener('touchend', card.addedEL)
-              card.$el.addEventListener("mousemove", card.addedELmove)
+              card.$el.addEventListener("drag", card.addedELmove)
               card.$el.addEventListener("touchmove", card.addedELmove)
             }
           } else {
@@ -284,7 +284,7 @@ Still freeze cleaners eBay and changed the rules of Italy
             if (typeof card.addedEL === "function") {
               card.$el.removeEventListener("mouseup", card.addedEL)
               card.$el.removeEventListener("touchend", card.addedEL)
-              card.$el.removeEventListener("mousemove", card.addedELmove)
+              card.$el.removeEventListener("drag", card.addedELmove)
               card.$el.removeEventListener("touchmove", card.addedELmove)
               delete(card.addedEL)
             }
@@ -295,7 +295,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           if (typeof card.addedEL === "function") {
             card.$el.removeEventListener("mouseup", card.addedEL)
             card.$el.removeEventListener("touchend", card.addedEL)
-            card.$el.removeEventListener("mousemove", card.addedELmove)
+            card.$el.removeEventListener("drag", card.addedELmove)
             card.$el.removeEventListener("touchmove", card.addedELmove)
             delete(card.addedEL)
           }
