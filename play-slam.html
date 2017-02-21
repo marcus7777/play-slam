@@ -51,6 +51,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       var gTable =   [[],[],   [],[]]
       var gP1Cards = [[],[],[],[],[]]
       
+      this.width = window.innerWidth
+      this.height = window.innerHeight
+      
       this.deck.mount(this.$.container)
       this.play(gP0Cards,gP1Cards,gTable,this.deck)
     },
@@ -144,7 +147,7 @@ Still freeze cleaners eBay and changed the rules of Italy
             timing = 21
           } else {
             middle[3].push(c)
-            timing = 22
+            timing = 26
             theX = 4
             theY = 1 
             onComplete = function () {
@@ -299,7 +302,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.set("middle", middle.map(function(ar) {return ar}))
       this.set("p1", p1.map(function(ar) {return ar}))
     },
-    place: function(x,y,card){
+    place: function(wx,wy,card){
+      var x = (wx / 1000) * this.width
+      var y = (wy / 1000) * this.height
       var p0 =     this.p0
       var middle = this.middle
       var p1 =     this.p1
@@ -415,7 +420,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.set("p1", p1.map(function(ar) {return ar}))
       this.allowPlay()
     },
-    removeCard: function(ar,thisOne, notRemove) {
+    removeCard: function(ar,thisOne,notRemove) {
       return ar.reduce(function (accumulator, currentValue) {
         accumulator.push(currentValue.reduce(function (accumulator, currentValue, cindex) {
           if (currentValue !== thisOne) {
@@ -430,9 +435,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       var that = this
       return function(event) {
         if (event.touches) {
-          that.place(event.touches[0].clientX, event.touches[0].clientY, picked)
+          that.place((event.touches[0].clientX/that.width)*1000, (event.touches[0].clientY/that.height)*1000, picked)
         } else {
-          that.place(event.x, event.y, picked)
+          that.place((event.x/that.width)*1000,(event.y/that.height)*1000, picked)
         }
       }
     },
