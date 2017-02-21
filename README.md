@@ -9,6 +9,8 @@ A game of cards I played with my daughter's. We are making this game and therefo
 
 Thank You to https://github.com/pakastin/deck-of-cards/
 
+Adding gundb for realtime player interation 
+
 data ideas
 data stream two a fast and long:
 
