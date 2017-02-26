@@ -5,11 +5,20 @@
     <title>play-slam demo</title>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="play-slam.html">
+    <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBvR5RhKao81RcCy05BAbDFdBDe6jvbUJg",
+        authDomain: "slam-5df8b.firebaseapp.com",
+        databaseURL: "https://slam-5df8b.firebaseio.com",
+        storageBucket: "slam-5df8b.appspot.com",
+        messagingSenderId: "994856518437"
+      }
+      firebase.initializeApp(config)
+    </script>
   </head>
   <body>
     <play-slam ></play-slam>
   </body>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600|Ubuntu+Condensed" rel="stylesheet" type="text/css">
-  <link href="../deck-of-cards/example/example.css" rel="stylesheet" type="text/css">
-  <script src="../deck-of-cards/dist/deck.js"></script>
 </html>
