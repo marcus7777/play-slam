@@ -146,7 +146,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var topCards = []
       var timing = 0
       deck.queue(function (next) {
-        that.unshuffle(deck.cards,that.order).forEach(function (card,i) {
+        deck.cards.forEach(function (card,i) {
           var c = card.suit * 13 + card.rank
           var theX
           var theY
