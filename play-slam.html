@@ -85,11 +85,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         
         for (var i = cards.length - 1; i; i--) {
           var c = cards[i].suit * 13 + cards[i].rank
-          ordered = key.indexOf(order[c])
-          
-          temp = cards[i]
-          cards[c] = cards[ordered]
-          cards[ordered] = temp
+          cards[i].pos = key.indexOf(order[c])
         }
       }
       return cards
@@ -104,17 +100,21 @@ Still freeze cleaners eBay and changed the rules of Italy
         next()
       })
       deck.queue(function (next) {
-        that.unshuffle(deck.cards, that.order).forEach(function (card,i) {
+        deck.cards = that.unshuffle(deck.cards, that.order)
+        next()
+      })
+      deck.queue(function (next) {
+        deck.cards.forEach(function (card,i) {
           var hand 
           var time = 0
           var onComplete = function (){}
-          if (i < 15) {
+          if (card.pos < 15) {
             hand = 0
-          } else if (i < 30) {
+          } else if (card.pos < 30) {
             hand = 1
-          } else if (i < 40) {
+          } else if (card.pos < 40) {
             hand = 0
-          } else if (i < 51) {
+          } else if (card.pos < 51) {
             hand = 1
           } else {
             hand = 0
@@ -144,15 +144,14 @@ Still freeze cleaners eBay and changed the rules of Italy
       var topCards = []
       var timing = 0
       deck.queue(function (next) {
-        deck.cards.forEach(function (card,i) {
-          
+        that.unshuffle(deck.cards,that.order).forEach(function (card,i) {
           var c = card.suit * 13 + card.rank
           var theX
           var theY
           var yShift = 0
           var onComplete = function (){}
           card.setSide('back')
-          if (i < 15) {
+          if (card.pos < 15) {
             if (plan[card.pos][1]) {
               onComplete  = function () {
                 deck.cards[i].setSide('front')
@@ -162,23 +161,23 @@ Still freeze cleaners eBay and changed the rules of Italy
             theY = 0
             p0Cards[theX].push(c)
             yShift = p0Cards[theX].length * -10
-          } else if (i < 30) {
-            if (plan[i-15][1]) {
+          } else if (card.pos < 30) {
+            if (plan[card.pos-15][1]) {
               onComplete  = function () {
                 deck.cards[i].setSide('front')
               }
             } 
-            theX = plan[i-15][0]
+            theX = plan[card.pos-15][0]
             timing = 15
             theY = 2
             p1Cards[theX].push(c)
             yShift = p1Cards[theX].length * 10
-          } else if (i < 40) {
+          } else if (card.pos < 40) {
             middle[3].push(c)
             timing = 11
             theX = 4
             theY = 1
-          } else if (i < 51){
+          } else if (card.pos < 51){
             middle[0].push(c)
             theX = 0
             theY = 1
@@ -207,8 +206,8 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
           
           card.animateTo({
-            delay: 500 + (i - timing) * 75,
-            duration: 500 + i * 27,
+            delay: 500 + (card.pos - timing) * 75,
+            duration: 500 + card.pos * 27,
             ease: 'quartOut',
             x: ((theX/4) * window.innerWidth - window.innerWidth / 2) * .7,
             y: (((theY/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
