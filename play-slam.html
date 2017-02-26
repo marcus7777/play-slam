@@ -43,6 +43,24 @@ Still freeze cleaners eBay and changed the rules of Italy
 <script>
   Polymer({
     is: "play-slam",
+    properties:{
+      order:{
+        type:String,
+        notify:true,
+      },
+      thisPlayerX:{
+        notify:true,
+        value: -1,
+      },
+      thisPlayerY:{
+        notify:true,
+        value: -1,
+      },
+      thisPlayerCard:{
+        notify:true,
+        value: -1,
+      },
+    },
     ready: function(){
       var prefix = Deck.prefix
       var transform = prefix('transform')
@@ -55,22 +73,18 @@ Still freeze cleaners eBay and changed the rules of Italy
       
       this.width = window.innerWidth
       this.height = window.innerHeight
-      this.thisPlayerX = -1
-      this.thisPlayerY = -1
-      this.thisPlayerCard = -1
       
       this.deck.mount(this.$.container)
       this.play(gP0Cards,gP1Cards,gTable,this.deck)
     },
-    unshuffle: function(deck,next) {
-      if (this.order) {
+    unshuffle: function(cards, order) {
+      if (order) {
         var key = "gVHLmcDtyexhKbOZkYBlFoupPUXArRTvwMSNzEnqjWaGisCfQIJd"
-        var cards = deck.cards
         var ordered
         var temp
         
         for (var i = cards.length - 1; i; i--) {
-          ordered = key.indexOf(this.order[i])
+          ordered = key.indexOf(order[i])
           var c = cards[i].suit * 13 + cards[i].rank
           temp = cards[c]
           cards[c] = cards[ordered]
@@ -85,7 +99,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         deck.fan()
         deck.flip()
         deck.shuffle()
-        that.unshuffle(deck)
+        deck.cards = that.unshuffle(deck.cards)
         next()
       })
       deck.queue(function (next) {
