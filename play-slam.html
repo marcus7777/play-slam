@@ -68,7 +68,9 @@ Still freeze cleaners eBay and changed the rules of Italy
         deck.flip()
         deck.fan()
         deck.flip()
-        deck.shuffle()
+        if (0) {
+          deck.shuffle()
+        }
         next()
       })
       deck.queue(function (next) {
@@ -166,11 +168,11 @@ Still freeze cleaners eBay and changed the rules of Italy
               }, 4000)
               setTimeout(function () {
                 that.count = 1
-              }, 5300)
+              }, 5700)
               setTimeout(function () {
                 that.count = ""
                 that.flipTheCards(topCards)
-              }, 6800)
+              }, 7800)
             }
           }
           
