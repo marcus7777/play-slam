@@ -277,8 +277,8 @@ Still freeze cleaners eBay and changed the rules of Italy
               card.addedELmove = that.move(c)
               card.$el.addEventListener('mouseup', card.addedEL)
               card.$el.addEventListener('touchend', card.addedEL)
-            //  card.$el.addEventListener("drag", card.addedELmove)
-            //  card.$el.addEventListener("touchmove", card.addedELmove)
+              card.$el.addEventListener("mousemove", card.addedELmove)
+              card.$el.addEventListener("touchmove", card.addedELmove)
             }
           } else {
             card.disableDragging()
