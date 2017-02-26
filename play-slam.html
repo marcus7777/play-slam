@@ -447,11 +447,8 @@ Still freeze cleaners eBay and changed the rules of Italy
     drop: function(picked){
       var that = this
       return function(event) {
-        if (event.touches) {
-          that.place((that.thisPlayerX/that.width)*1000, (that.thisPlayerY/that.height)*1000, picked)
-        } else {
-          that.place((event.x/that.width)*1000,(event.y/that.height)*1000, picked)
-        }
+        that.place((that.thisPlayerX)*1000, (that.thisPlayerY)*1000, picked)
+        //  that.place((event.x/that.width)*1000,(event.y/that.height)*1000, picked)
       }
     },
     move: function(picked){
@@ -477,9 +474,8 @@ Still freeze cleaners eBay and changed the rules of Italy
       } 
       return function(event) {
         var cursur = pointerEventToXY(event)
-        console.log(cursur,picked)
-        that.thisPlayerX = cursur.X
-        that.thisPlayerY = cursur.y
+        that.thisPlayerX = cursur.X/that.width
+        that.thisPlayerY = cursur.y/that.height
         that.thisPlayerCard = picked
         //if (event.touches) {
         //  that.place((event.touches[0].clientX/that.width)*1000, (event.touches[0].clientY/that.height)*1000, picked)
