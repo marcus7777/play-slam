@@ -100,11 +100,11 @@ Still freeze cleaners eBay and changed the rules of Italy
         deck.fan()
         deck.flip()
         deck.shuffle()
-        deck.cards = that.unshuffle(deck.cards, that.order)
+       // deck.cards = that.unshuffle(deck.cards, that.order)
         next()
       })
       deck.queue(function (next) {
-        deck.cards.forEach(function (card,i) {
+        that.unshuffle(deck.cards, that.order).forEach(function (card,i) {
           var hand 
           var time = 0
           var onComplete = function (){}
