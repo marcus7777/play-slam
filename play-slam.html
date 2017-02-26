@@ -71,8 +71,9 @@ Still freeze cleaners eBay and changed the rules of Italy
         
         for (var i = cards.length - 1; i; i--) {
           ordered = key.indexOf(this.order[i])
-          temp = cards[i]
-          cards[i] = cards[ordered]
+          var c = cards[i].suit * 13 + cards[i].rank
+          temp = cards[c]
+          cards[c] = cards[ordered]
           cards[ordered] = temp
         }
       }
