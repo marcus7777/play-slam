@@ -271,8 +271,8 @@ Still freeze cleaners eBay and changed the rules of Italy
               card.disableFlipping()
             }
             if (!card.addedEL) {
-              card.addedEL = that.move(c)
-              card.addedELmove = that.drop(c)
+              card.addedEL = that.drop(c)
+              card.addedELmove = that.move(c)
               card.$el.addEventListener('mouseup', card.addedEL)
               card.$el.addEventListener('touchend', card.addedEL)
             //  card.$el.addEventListener("drag", card.addedELmove)
