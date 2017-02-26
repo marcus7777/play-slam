@@ -55,6 +55,10 @@ Still freeze cleaners eBay and changed the rules of Italy
       
       this.width = window.innerWidth
       this.height = window.innerHeight
+      this.thisPlayerX = -1
+      this.thisPlayerY = -1
+      this.thisPlayerCard = -1
+      
       
       this.deck.mount(this.$.container)
       this.play(gP0Cards,gP1Cards,gTable,this.deck)
@@ -286,8 +290,8 @@ Still freeze cleaners eBay and changed the rules of Italy
             if (typeof card.addedEL === "function") {
               card.$el.removeEventListener("mouseup", card.addedEL)
               card.$el.removeEventListener("touchend", card.addedEL)
-         //     card.$el.removeEventListener("drag", card.addedELmove)
-          //    card.$el.removeEventListener("touchmove", card.addedELmove)
+              card.$el.removeEventListener("drag", card.addedELmove)
+              card.$el.removeEventListener("touchmove", card.addedELmove)
               delete(card.addedEL)
             }
           }
@@ -297,8 +301,8 @@ Still freeze cleaners eBay and changed the rules of Italy
           if (typeof card.addedEL === "function") {
             card.$el.removeEventListener("mouseup", card.addedEL)
             card.$el.removeEventListener("touchend", card.addedEL)
-   //         card.$el.removeEventListener("drag", card.addedELmove)
-    //        card.$el.removeEventListener("touchmove", card.addedELmove)
+            card.$el.removeEventListener("drag", card.addedELmove)
+            card.$el.removeEventListener("touchmove", card.addedELmove)
             delete(card.addedEL)
           }
         }
@@ -452,8 +456,24 @@ Still freeze cleaners eBay and changed the rules of Italy
     },
     move: function(picked){
       var that = this
+      var pointerEventToXY = function(e){
+        var out = {x:0, y:0};
+        if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
+          var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+          out.x = touch.pageX;
+          out.y = touch.pageY;
+        } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+          out.x = e.pageX;
+          out.y = e.pageY;
+        }
+        return out;
+      } 
       return function(event) {
-        console.log(event,picked)
+        var cursur = pointerEventToXY(event)
+        console.log(cursur,picked)
+        that.thisPlayerX = cursur.X
+        that.thisPlayerY = cursur.y
+        that.thisPlayerCard = picked
         //if (event.touches) {
         //  that.place((event.touches[0].clientX/that.width)*1000, (event.touches[0].clientY/that.height)*1000, picked)
         //} else {
