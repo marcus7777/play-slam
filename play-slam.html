@@ -84,13 +84,14 @@ Still freeze cleaners eBay and changed the rules of Italy
         var temp
         
         for (var i = cards.length - 1; i; i--) {
-          ordered = key.indexOf(order[i])
           var c = cards[i].suit * 13 + cards[i].rank
+          ordered = key.indexOf(order[c])
           temp = cards[c]
           cards[c] = cards[ordered]
           cards[ordered] = temp
         }
       }
+      return cards
     },
     play: function(p0Cards, p1Cards, middle, deck){
       var that = this
@@ -99,7 +100,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         deck.fan()
         deck.flip()
         deck.shuffle()
-        deck.cards = that.unshuffle(deck.cards)
+        deck.cards = that.unshuffle(deck.cards, that.order)
         next()
       })
       deck.queue(function (next) {
