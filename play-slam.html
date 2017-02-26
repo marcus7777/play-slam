@@ -460,8 +460,8 @@ Still freeze cleaners eBay and changed the rules of Italy
         var out = {x:0, y:0};
         if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
           var touch
-          if (e.originalEvent && originalEvent.touches) {
-            touch = e.originalEvent.touches[0]
+          if (e.touches) {
+            touch = e.touches[0]
           } else if (e.originalEvent && e.originalEvent.changedTouches) {
             touch = e.originalEvent.changedTouches[0]
           } 
