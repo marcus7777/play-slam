@@ -281,7 +281,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               card.addedELmove = that.move(c)
               card.$el.addEventListener('mouseup', card.addedEL)
               card.$el.addEventListener('touchend', card.addedEL)
-              card.$el.addEventListener("mousemove", card.addedELmove)
+              card.$el.addEventListener("drag", card.addedELmove)
               card.$el.addEventListener("touchmove", card.addedELmove)
             }
           } else {
@@ -290,7 +290,7 @@ Still freeze cleaners eBay and changed the rules of Italy
             if (typeof card.addedEL === "function") {
               card.$el.removeEventListener("mouseup", card.addedEL)
               card.$el.removeEventListener("touchend", card.addedEL)
-              card.$el.removeEventListener("mousemove", card.addedELmove)
+              card.$el.removeEventListener("drag", card.addedELmove)
               card.$el.removeEventListener("touchmove", card.addedELmove)
               delete(card.addedEL)
             }
@@ -301,7 +301,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           if (typeof card.addedEL === "function") {
             card.$el.removeEventListener("mouseup", card.addedEL)
             card.$el.removeEventListener("touchend", card.addedEL)
-            card.$el.removeEventListener("mousemove", card.addedELmove)
+            card.$el.removeEventListener("drag", card.addedELmove)
             card.$el.removeEventListener("touchmove", card.addedELmove)
             delete(card.addedEL)
           }
@@ -448,7 +448,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       var that = this
       return function(event) {
         if (event.touches) {
-          that.place((event.touches[0].clientX/that.width)*1000, (event.touches[0].clientY/that.height)*1000, picked)
+          that.place((that.thisPlayerX/that.width)*1000, (that.thisPlayerY/that.height)*1000, picked)
         } else {
           that.place((event.x/that.width)*1000,(event.y/that.height)*1000, picked)
         }
