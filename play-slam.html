@@ -77,7 +77,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.deck.mount(this.$.container)
       this.play(gP0Cards,gP1Cards,gTable,this.deck)
     },
-    unshuffle: function(cards, order) {
+    unshuffle: function(cards, order, next) {
       if (order) {
         var key = "gVHLmcDtyexhKbOZkYBlFoupPUXArRTvwMSNzEnqjWaGisCfQIJd"
         var ordered
@@ -90,6 +90,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           }
         }
       }
+      next()
       return cards
     },
     play: function(p0Cards, p1Cards, middle, deck){
@@ -102,7 +103,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         next()
       })
       deck.queue(function (next) {
-      //  deck.cards = that.unshuffle(deck.cards, that.order)
+        deck.cards = that.unshuffle(deck.cards, that.order, next)
         next()
       })
       deck.queue(function (next) {
