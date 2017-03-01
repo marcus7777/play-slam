@@ -260,7 +260,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       // find top cards for middle pile
       this.deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
-         if (that.isOnTop(that.p0.concat(that.middle,that.p1),c) !== -1) {
+         if (that.isOnTop(that.p0.concat(that.p1),c) !== -1) {
           card.setSide('front')
         }
         function moveCard(from, to, fromX ,toX){
