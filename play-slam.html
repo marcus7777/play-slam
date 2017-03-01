@@ -471,6 +471,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.allowPlay()
     },
     tidy: function(cards) {
+      var that = this
       if (!Array.isArray(cards)) {
         cards = this.deck.cards
       }
@@ -478,30 +479,28 @@ Still freeze cleaners eBay and changed the rules of Italy
       var middle =    this.middle
       var p1 =        this.p1
       var yShift =    0
-      var isinArray = this.isinArray
-      var getHeight =  this.getHeight
       
       cards.forEach(function (theCard) {
         var c = theCard.suit * 13 + theCard.rank
         var moveBackToTheY = 1
         var moveBackToTheX = 2
         
-        var fromP0 = isinArray(p0,c)
-        var fromMiddle = isinArray(middle,c)
-        var fromP1 = isinArray(p1,c)
+        var fromP0 = that.isinArray(p0,c)
+        var fromMiddle = that.isinArray(middle,c)
+        var fromP1 = that.isinArray(p1,c)
         var yShift = 0
         if (fromP0 !== -1) {
           moveBackToTheY = 0
           moveBackToTheX = fromP0
-          yShift = (getHeight(p0.concat(middle, p1),c)+1) * 10
+          yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * 10
         } else if (fromMiddle !== -1) {
           moveBackToTheY = 1
           moveBackToTheX = fromMiddle
-          yShift = (getHeight(p0.concat(middle, p1),c)+1) * 1
+          yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * 1
         } else if (fromP1 !== -1) {
           moveBackToTheY = 2
           moveBackToTheX = fromP1
-          yShift = (getHeight(p0.concat(middle, p1),c)+1) * -10
+          yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * -10
         }
         theCard.animateTo({
           delay: 50,
