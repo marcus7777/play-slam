@@ -221,9 +221,9 @@ Still freeze cleaners eBay and changed the rules of Italy
           })
           
         })
-        that.p0 = p0Cards
+        that.p0     = p0Cards
         that.middle = middle
-        that.p1 = p1Cards
+        that.p1     = p1Cards
         next()
       })
     },
@@ -500,7 +500,7 @@ Still freeze cleaners eBay and changed the rules of Italy
           } else {
             moveBackToTheX = fromMiddle + 1
           }
-          yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * 1
+          yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * -1
         } else if (fromP1 !== -1) {
           moveBackToTheY = 2
           moveBackToTheX = fromP1
