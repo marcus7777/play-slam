@@ -160,21 +160,11 @@ Still freeze cleaners eBay and changed the rules of Italy
           var onComplete = function (){}
           card.setSide('back')
           if (card.pos < 15) {
-            onComplete = function () {
-              if (that.isOnTop(p0Cards,c)) {
-                card.setSide('front')
-              }
-            }
             theX = 4 - plan[card.pos][0]
             theY = 0
             p0Cards[theX].push(c)
             yShift = p0Cards[theX].length * -10
           } else if (card.pos < 30) {
-            onComplete = function () {
-              if (that.isOnTop(p1Cards,c)) {
-                card.setSide('front')
-              }
-            }
             theX = plan[card.pos-15][0]
             timing = 15
             theY = 2
@@ -270,6 +260,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       // find top cards for middle pile
       this.deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
+         if (that.isOnTop(that.p0.concat(that.middle,that.p1),c) !== -1) {
+          card.setSide('front')
+        }
         function moveCard(from, to, fromX ,toX){
           var onComplete  = function () {
             card.setSide('front')
