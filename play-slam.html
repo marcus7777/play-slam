@@ -201,6 +201,7 @@ Still freeze cleaners eBay and changed the rules of Italy
             if (that.order) {
               setTimeout(function () {
                 that.tidy()
+                that.allowPlay()
               }, 10)
             } else {
               onComplete = function () {
