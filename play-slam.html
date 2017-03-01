@@ -492,19 +492,23 @@ Still freeze cleaners eBay and changed the rules of Italy
         if (fromP0 !== -1) {
           moveBackToTheY = 0
           moveBackToTheX = fromP0
-          yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * 10
+          yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * -10
         } else if (fromMiddle !== -1) {
           moveBackToTheY = 1
-          moveBackToTheX = fromMiddle
+          if (fromMiddle > 1) {
+            moveBackToTheX = fromMiddle
+          } else {
+            moveBackToTheX = fromMiddle + 1
+          }
           yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * 1
         } else if (fromP1 !== -1) {
           moveBackToTheY = 2
           moveBackToTheX = fromP1
-          yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * -10
+          yShift = (that.getHeight(p0.concat(middle, p1),c)+1) * 10
         }
         theCard.animateTo({
           delay: 50,
-          duration: 750,
+          duration: 50,
           rot:theCard.rot +180,
           ease: 'quartOut',
           x: ((moveBackToTheX/4) * window.innerWidth - window.innerWidth / 2) * .7,
