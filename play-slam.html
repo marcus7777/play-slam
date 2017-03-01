@@ -32,12 +32,12 @@ Still freeze cleaners eBay and changed the rules of Italy
     }
     </style>
     <div id="container"></div>
+    <template is="dom-if" if="[[setReady]]">
+      <paper-button on-tap="tidy" >Tidy</paper-button>
+    </template>
     <div style="position: absolute;top:50%">
       <template is="dom-if" if="[[setReady]]">
         <paper-button on-tap="isReady" >Go!</paper-button>
-      </template>
-      <template is="dom-if" if="[[setReady]]">
-        <paper-button style="float:right" on-tap="tidy" >Tidy</paper-button>
       </template>
       [[count]]
     </div>
@@ -106,7 +106,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         next()
       })
       deck.queue(function (next) {
-        deck.cards = that.unshuffle(deck.cards, that.order, next)
+       // deck.cards = that.unshuffle(deck.cards, that.order, next)
         next()
       })
       deck.queue(function (next) {
