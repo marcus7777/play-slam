@@ -477,14 +477,16 @@ Still freeze cleaners eBay and changed the rules of Italy
       var p0 =     this.p0
       var middle = this.middle
       var p1 =     this.p1
+      var isinArray = this.isinArray
+      
       cards.forEach(function (theCard) {
         var c = theCard.suit * 13 + theCard.rank
         var moveBackToTheY = 1
         var moveBackToTheX = 2
         
-        var fromP0 = this.isinArray(p0,c)
-        var fromMiddle = this.isinArray(middle,c)
-        var fromP1 = this.isinArray(p1,c)
+        var fromP0 = isinArray(p0,c)
+        var fromMiddle = isinArray(middle,c)
+        var fromP1 = isinArray(p1,c)
         if (fromP0 !== -1) {
           moveBackToTheY = 0
           moveBackToTheX = fromP0
