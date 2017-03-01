@@ -203,13 +203,13 @@ Still freeze cleaners eBay and changed the rules of Italy
                 that.tidy()
                 that.allowPlay()
                 that.setReady = true
-                that.next()
+                next()
               }, 10)
             } else {
               onComplete = function () {
                 setTimeout(function () {
                   that.allowPlay()
-                  that.next()
+                  next()
                   that.count = 3
                 }, 3000)
                 setTimeout(function () {
