@@ -113,7 +113,7 @@ Still freeze cleaners eBay and changed the rules of Italy
         })
         deck.queue(function (next) {
           deck.cards.forEach(function (card,i) {
-            var hand 
+            var hand
             var time = 0
             var onComplete = function (){}
             if (card.pos < 15) {
@@ -174,7 +174,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               onComplete  = function () {
                 deck.cards[i].setSide('front')
               }
-            } 
+            }
             theX = plan[card.pos-15][0]
             timing = 15
             theY = 2
@@ -202,6 +202,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               setTimeout(function () {
                 that.tidy()
                 that.allowPlay()
+                that.setReady = true
               }, 10)
             } else {
               onComplete = function () {
@@ -217,13 +218,15 @@ Still freeze cleaners eBay and changed the rules of Italy
                 }, 5700)
                 setTimeout(function () {
                   that.count = ""
-                  that.flipTheCards(topCards)
+                  that.flipTheCards()
                 }, 7800)
               }
             }
           }
           
-          if (!that.order) {
+          if (that.order) {
+            onComplete()
+          } else {
             card.animateTo({
               delay: 500 + (card.pos - timing) * 75,
               duration: 500 + card.pos * 27,
