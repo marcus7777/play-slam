@@ -36,6 +36,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       <template is="dom-if" if="[[setReady]]">
         <paper-button on-tap="isReady" >Go!</paper-button>
       </template>
+      <template is="dom-if" if="[[setReady]]">
+        <paper-button style="float:right" on-tap="tidy" >Tidy</paper-button>
+      </template>
       [[count]]
     </div>
   </template>
@@ -466,6 +469,41 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.set("middle", middle.map(function(ar) {return ar}))
       this.set("p1", p1.map(function(ar) {return ar}))
       this.allowPlay()
+    },
+    tidy: function(cards) {
+      if (!Array.isArray(cards)) {
+        cards = this.deck.cards
+      }
+      var p0 =     this.p0
+      var middle = this.middle
+      var p1 =     this.p1
+      cards.forEach(function (theCard) {
+        var c = theCard.suit * 13 + theCard.rank
+        var moveBackToTheY = 1
+        var moveBackToTheX = 2
+        
+        var fromP0 = this.isinArray(p0,c)
+        var fromMiddle = this.isinArray(middle,c)
+        var fromP1 = this.isinArray(p1,c)
+        if (fromP0 !== -1) {
+          moveBackToTheY = 0
+          moveBackToTheX = fromP0
+        } else if (fromMiddle !== -1) {
+          moveBackToTheY = 1
+          moveBackToTheX = fromMiddle
+        } else if (fromP1 !== -1) {
+          moveBackToTheY = 2
+          moveBackToTheX = fromP1
+        }
+        theCard.animateTo({
+          delay: 50,
+          duration: 750,
+          rot:theCard.rot +180,
+          ease: 'quartOut',
+          x: ((moveBackToTheX/4) * window.innerWidth - window.innerWidth / 2) * .7,
+          y: (((moveBackToTheY/2) * window.innerHeight - window.innerHeight / 2) *.6) + yShift - 30,
+        })
+      })
     },
     removeCard: function(ar,thisOne,notRemove) {
       return ar.reduce(function (accumulator, currentValue) {
