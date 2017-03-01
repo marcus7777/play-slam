@@ -183,16 +183,19 @@ Still freeze cleaners eBay and changed the rules of Italy
             timing = 11
             theX = 4
             theY = 1
+            yShift = (that.getHeight(middle)+1) * -.25
           } else if (card.pos < 51){
             middle[0].push(c)
             theX = 0
             theY = 1
             timing = 21
+            yShift = (that.getHeight(middle)+1) * -.25
           } else {
             middle[3].push(c)
             timing = 24
             theX = 4
             theY = 1 
+            yShift = (that.getHeight(middle)+1) * -.25
             onComplete = function () {
               setTimeout(function () {
                 that.allowPlay()
