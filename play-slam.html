@@ -160,9 +160,9 @@ Still freeze cleaners eBay and changed the rules of Italy
           var onComplete = function (){}
           card.setSide('back')
           if (card.pos < 15) {
-            if (plan[card.pos][1]) {
-              onComplete  = function () {
-                deck.cards[i].setSide('front')
+            onComplete = function () {
+              if (that.isOnTop(p0Cards,c)) {
+                card.setSide('front')
               }
             }
             theX = 4 - plan[card.pos][0]
@@ -170,9 +170,9 @@ Still freeze cleaners eBay and changed the rules of Italy
             p0Cards[theX].push(c)
             yShift = p0Cards[theX].length * -10
           } else if (card.pos < 30) {
-            if (plan[card.pos-15][1]) {
-              onComplete  = function () {
-                deck.cards[i].setSide('front')
+            onComplete = function () {
+              if (that.isOnTop(p1Cards,c)) {
+                card.setSide('front')
               }
             }
             theX = plan[card.pos-15][0]
