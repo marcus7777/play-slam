@@ -199,6 +199,7 @@ Still freeze cleaners eBay and changed the rules of Italy
               onComplete = function () {
                 setTimeout(function () {
                   that.allowPlay()
+                  that.turnTopCards()
                   next()
                   that.count = 3
                 }, 3000)
@@ -255,14 +256,19 @@ Still freeze cleaners eBay and changed the rules of Italy
     isReady: function(){
       this.flipTheCards()
     },
+    turnTopCards: function(){
+      this.deck.cards.forEach(function (card, i) {
+        var c = card.suit * 13 + card.rank
+        if (that.isOnTop(that.p0.concat(that.p1),c) !== -1) {
+          card.setSide('front')
+        }
+      })
+    },
     flipTheCards: function(){
       var that = this
       // find top cards for middle pile
       this.deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
-         if (that.isOnTop(that.p0.concat(that.p1),c) !== -1) {
-          card.setSide('front')
-        }
         function moveCard(from, to, fromX ,toX){
           var onComplete  = function () {
             card.setSide('front')
