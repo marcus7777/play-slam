@@ -64,6 +64,12 @@ Still freeze cleaners eBay and changed the rules of Italy
         value: -1,
       },
     },
+    listeners: {
+      'iron-resize': 'tidy'
+    },
+    behaviors: [
+      Polymer.IronResizableBehavior
+    ],
     ready: function(){
       var prefix = Deck.prefix
       var transform = prefix('transform')
