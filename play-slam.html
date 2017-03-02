@@ -257,6 +257,7 @@ Still freeze cleaners eBay and changed the rules of Italy
       this.flipTheCards()
     },
     turnTopCards: function(){
+      var that = this
       this.deck.cards.forEach(function (card, i) {
         var c = card.suit * 13 + card.rank
         if (that.isOnTop(that.p0.concat(that.p1),c) !== -1) {
