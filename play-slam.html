@@ -16,7 +16,6 @@ Still freeze cleaners eBay and changed the rules of Italy
 -->
 <dom-module id="play-slam">
   <template>
-    
     <style>
     :host {
       height:600px;
@@ -71,7 +70,10 @@ Still freeze cleaners eBay and changed the rules of Italy
       },
       slam:{
         computed:"isSlam(p0,p1)"
-      }
+      },
+      setReady: {
+        computed:"stuck(p0,middle,p1)"
+      },
     },
     listeners: {
       'iron-resize': 'tidy'
@@ -209,7 +211,6 @@ Still freeze cleaners eBay and changed the rules of Italy
               setTimeout(function () {
                 that.tidy()
                 that.allowPlay()
-                that.setReady = true
                 next()
               }, 10)
             } else {
@@ -647,6 +648,15 @@ Still freeze cleaners eBay and changed the rules of Italy
       } else if (JSON.stringify(p1) == compare) {
         return true
       } else {
+        return false
+      }
+    },
+    stuck: function(p0,middle,p1) {
+      if (middle[0].length || middle[3].length) {
+        return true
+        // test if can go
+      } else {
+        // out of cards
         return false
       }
     },
