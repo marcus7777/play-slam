@@ -639,9 +639,10 @@ Still freeze cleaners eBay and changed the rules of Italy
       return theBoard[theY][theX]
     },
     isSlam: function(p0,p1){
-      if (p0 == [[],[],[],[],[]]) {
+      var compare = JSON.stringify([[],[],[],[],[]])
+      if (JSON.stringify(p0) == compare ) {
         return true
-      } else if (p1 == [[],[],[],[],[]]) {
+      } else if (JSON.stringify(p1) == compare) {
         return true
       } else {
         return false
