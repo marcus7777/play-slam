@@ -83,7 +83,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       var prefix = Deck.prefix
       var transform = prefix('transform')
       var translate = Deck.translate
-      this.deck = Deck()
+      if (!this.deck) {
+        this.deck = Deck()
+      }
       /* Game State */
       var gP0Cards = [[],[],[],[],[]]
       var gTable =   [[],[],   [],[]]
