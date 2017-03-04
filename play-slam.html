@@ -255,11 +255,13 @@ Still freeze cleaners eBay and changed the rules of Italy
     },
     isinArray: function(ar,findThis) {
       var index = -1
-      ar.forEach(function (arr,i) {
-        if (arr.indexOf(findThis) !== -1) {
-          index = i
-        }
-      })
+      if (ar && Array.isArray(ar)) {
+        ar.forEach(function (arr,i) {
+          if (arr.indexOf(findThis) !== -1) {
+            index = i
+          }
+        })
+      }
       return index
     },
     isOnTop: function (ar,test) { 
