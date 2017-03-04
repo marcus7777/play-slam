@@ -128,7 +128,9 @@ Still freeze cleaners eBay and changed the rules of Italy
       } else {
         deck.queue(function (next) {
           deck.flip()
-          deck.fan()
+          if (shuffle) {
+            deck.fan()
+          }
           deck.flip()
           if (shuffle) {
             deck.shuffle()
