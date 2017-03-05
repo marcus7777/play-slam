@@ -33,16 +33,20 @@ Still freeze cleaners eBay and changed the rules of Italy
     }
     </style>
     <div id="container"></div>
+    <paper-button on-tap="ready">New Game</paper-button>
     <template is="dom-if" if="[[setReady]]">
       <paper-button on-tap="tidy" >Tidy</paper-button>
     </template>
     <div style="position: absolute;top:50%">
       <template is="dom-if" if="[[setReady]]">
-        <paper-button on-tap="isReady" >Go!</paper-button>
+        <paper-button on-tap="isReady">Go!</paper-button>
       </template>
       
       <template is="dom-if" if="[[slam]]">
-        <paper-button on-tap="ready" >restart</paper-button>
+        <paper-button on-tap="slama">Slam a</paper-button>
+        <paper-button on-tap="slamA">Slam A</paper-button>
+        <paper-button on-tap="slamB">Slam B</paper-button>
+        <paper-button on-tap="slamb">Slam b</paper-button>
       </template>
       [[count]]
     </div>
@@ -89,18 +93,18 @@ Still freeze cleaners eBay and changed the rules of Italy
       if (!this.deck) {
         this.deck = Deck()
       } else {
-        shuffle = false
+        // shuffle = false
       }
       /* Game State */
       var gP0Cards = [[],[],[],[],[]]
-      var gTable =   [[],[],   [],[]]
+      var gMiddle =  [[],[],   [],[]]
       var gP1Cards = [[],[],[],[],[]]
       
       this.width = window.innerWidth
       this.height = window.innerHeight
       
       this.deck.mount(this.$.container)
-      this.play(gP0Cards,gP1Cards,gTable,this.deck,shuffle)
+      this.play(gP0Cards,gP1Cards,gMiddle,this.deck,shuffle)
     },
     unshuffle: function(cards, order, next) {
       if (order) {
@@ -667,6 +671,18 @@ Still freeze cleaners eBay and changed the rules of Italy
         // out of cards
         return false
       }
+    },
+    slama: function() {
+      
+    },
+    slamA: function() {
+      
+    },
+    slamB: function() {
+      
+    },
+    slamb: function() {
+      
     },
   })
 </script>
