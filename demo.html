@@ -42,9 +42,10 @@
         app.logout = function () {
           app.$.auth.signOut()
         }
-        app.attached = function () {
+        window.addEventListener('WebComponentsReady', function(e) {
           app.$.mdl.full()
-        }
+        })
+        
       })(document);
     </script>
 </html>
