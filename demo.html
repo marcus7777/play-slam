@@ -22,7 +22,7 @@
   </head>
   <body>
     <template is="dom-bind" id="app" app-title="Title Here">
-      <mdl-template-dash  user="{{user}}" pages='[{"Label":"Join","Icon":"compare-arrows"},{"Label":"play","Icon":"content-copy"}]' on-logout="logout" sign-in='["GoogleAuthProvider"]'>
+      <mdl-template-dash id="mdl" user="{{user}}" pages='[{"Label":"Join","Icon":"compare-arrows"},{"Label":"play","Icon":"content-copy"}]' on-logout="logout" sign-in='["GoogleAuthProvider"]'>
         <Play-page>
           <play-slam></play-slam>
         </Play-page>
@@ -35,4 +35,16 @@
       </mdl-template-dash>
     </template>
   </body>
+    <script>
+      (function (document) {
+        'use strict';
+        var app = document.querySelector('#app')
+        app.logout = function () {
+          app.$.auth.signOut()
+        }
+        app.ready = function () {
+          app.$.mdl.full()
+        }
+      })(document);
+    </script>
 </html>
