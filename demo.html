@@ -22,13 +22,13 @@
   </head>
   <body>
     <template is="dom-bind" id="app" app-title="Title Here">
-      <mdl-template-dash user="{{user}}" pages='[{"Label":"play","Icon":"content-copy"},{"Label":"Join a game","Icon":"compare-arrows"}]' on-logout="logout" sign-in='["GoogleAuthProvider"]'>
+      <mdl-template-dash user="{{user}}" pages='[{"Label":"play","Icon":"content-copy"},{"Label":"Join","Icon":"compare-arrows"}]' on-logout="logout" sign-in='["GoogleAuthProvider"]'>
         <Play-page>
           <play-slam></play-slam>
         </Play-page>
-        <Join-a-game-page>
+        <Join-page>
           <h1>hi {{user.displayName}} list of people to play: {{list}}</h1>
-        </Join-a-game-page>
+        </Join-page>
         <login-page>
           <firebase-ui-auth user="{{user}}" sign-in-success-url="" id="auth"></firebase-ui-auth>
         </login-page>
