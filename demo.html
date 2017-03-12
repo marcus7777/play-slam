@@ -46,7 +46,7 @@
         app.setList = function(displayName) {                  
           var sessionsRef = firebase.database().ref("sessions")
           sessionsRef.push({
-            startedAt: firebase.database.ServerValue.TIMESTAMP,
+            joinAt: firebase.database.ServerValue.TIMESTAMP,
             user: displayName,
           })
           
