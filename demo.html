@@ -22,7 +22,7 @@
   </head>
   <body>
     <template is="dom-bind" id="app" app-title="Title Here">
-      <mdl-template-dash user="{{user}}" pages='[{"Label":"play","Icon":"content-copy"},{"Label":"Join a game","Icon":"compare-arrows"}]' on-logout="logout">
+      <mdl-template-dash user="{{user}}" pages='[{"Label":"play","Icon":"content-copy"},{"Label":"Join a game","Icon":"compare-arrows"}]' on-logout="logout" sign-in='["GoogleAuthProvider"]'>
         <play-page>
           <play-slam></play-slam>
         </play-page>
