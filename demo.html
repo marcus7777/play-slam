@@ -42,6 +42,15 @@
         app.logout = function () {
           app.$.auth.signOut()
         }
+        app.properties.list = {computed:"setList(user.displayName)"}
+        app.setList = function(displayName) {                  
+          var sessionsRef = firebase.database().ref("sessions")
+          sessionsRef.push({
+            startedAt: firebase.database.ServerValue.TIMESTAMP,
+            user: displayName,
+          })
+          
+        }
       })(document);
     </script>
 </html>
