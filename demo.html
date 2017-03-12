@@ -5,6 +5,8 @@
     <title>play-slam demo</title>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="play-slam.html">
+    <link rel="import" href="../mdl-template-dash/mdl-template-dash.html">
+    <link rel="import" href="../firebase-ui-auth/firebase-ui-auth.html">
     <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -19,6 +21,15 @@
     </script>
   </head>
   <body>
-    <play-slam></play-slam>
+    <template is="dom-bind" id="app" app-title="Title Here">
+      <mdl-template-dash user="{{user}}" on-logout="logout">
+        <home-page>
+          <play-slam></play-slam>
+        </home-page>
+        <login-page>
+          <firebase-ui-auth user="{{user}}" sign-in-success-url="" id="auth"></firebase-ui-auth>
+        </login-page>
+      </mdl-template-dash>
+    </template>
   </body>
 </html>
