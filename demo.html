@@ -28,8 +28,8 @@
         </Play-page>
         <Join-page>
           <h1>hi {{user.displayName}} list of people to play: </h1>
-          <template is="dom-repeat" items="[[list]]">
-            <p>name: [[item]]</p>
+          <template is="dom-repeat" items="[[list]]" sort="sortNames">
+            <p>Name: [[item]]</p>
           </template>
         </Join-page>
         <login-page>
@@ -45,7 +45,16 @@
         app.logout = function () {
           app.$.auth.signOut()
         }
-        app.names = {}
+        app.sortNames = function(a,b) {
+          if (app.names[a] > app.names[b] ) {
+            return -1
+          }
+          if (app.names[a] < app.names[b] ) {
+            return 1
+          }
+          // a must be equal to b
+          return 0
+        }
         app.properties._list = {computed:"setList(user.displayName)"}
         app.setList = function(displayName) {
           var name = displayName.split(" ")[0]
@@ -57,6 +66,7 @@
           sessionsRef.on('value', function(snapshot) {
             var data = snapshot.val()
             if (data) {
+              app.names = {}
               var fbKeys = Object.keys(data)
               var output = []
               for (var i = 0; i < fbKeys.length; i++) {
