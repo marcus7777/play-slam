@@ -28,7 +28,7 @@
         </Play-page>
         <Join-page>
           <h1>hi {{user.displayName}} list of people to play: </h1>
-          <template is="dom-repeat" items="[[list]]" filter="nameFilter">
+          <template is="dom-repeat" items="[[list]]">
             <p>name: item.name</p>
           </template>
         </Join-page>
@@ -45,9 +45,7 @@
         app.logout = function () {
           app.$.auth.signOut()
         }
-        app.nameFilter = function(item) {
-          console.log(item)
-        }
+        app.names = {}
         app.properties._list = {computed:"setList(user.displayName)"}
         app.setList = function(displayName) {
           var name = displayName.split(" ")[0]
@@ -61,9 +59,15 @@
             if (data) {
               var keys = Object.keys(data)
               var output = []
+              if (!app.names.hasOwnProperty(item.name)) { 
+                app.names[item.name] = item.joinAt
+              }
               for (var i = 0; i < keys.length; i++) {
                 if (typeof data[keys[i]] === 'object') {
-                  output.push(data[keys[i]])
+                  if (!app.names.hasOwnProperty(item.name)) {
+                    app.names[data[keys[i]]] = item.joinAt
+                    output.push( data[keys[i]] ) 
+                  }
                 }
               }
               app.list = output
