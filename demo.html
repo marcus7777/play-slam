@@ -28,7 +28,7 @@
         </Play-page>
         <Join-page>
           <h1>hi {{user.displayName}} list of people to play: </h1>
-          <template is="dom-repeat" items="[[list]]">
+          <template is="dom-repeat" items="[[list]]" filter="nameFilter">
             <p>name: item.name</p>
           </template>
         </Join-page>
@@ -44,6 +44,9 @@
         var app = document.querySelector('#app')
         app.logout = function () {
           app.$.auth.signOut()
+        }
+        app.nameFilter = function(item) {
+          console.log(item)
         }
         app.properties.list = {computed:"setList(user.displayName)"}
         app.setList = function(displayName) {
