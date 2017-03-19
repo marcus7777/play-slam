@@ -27,7 +27,10 @@
           <play-slam></play-slam>
         </Play-page>
         <Join-page>
-          <h1>hi {{user.displayName}} list of people to play: {{list}}</h1>
+          <h1>hi {{user.displayName}} list of people to play: </h1>
+          <template is="dom-repeat" items="[[list]]">
+            <p>name: item.name</p>
+          </template>
         </Join-page>
         <login-page>
           <firebase-ui-auth user="{{user}}" sign-in-success-url="" id="auth"></firebase-ui-auth>
