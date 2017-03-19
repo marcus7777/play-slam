@@ -44,13 +44,26 @@
         }
         app.properties.list = {computed:"setList(user.displayName)"}
         app.setList = function(displayName) {
+          var that = this
           var name = displayName.split(" ")[0]
           var sessionsRef = firebase.database().ref("sessions")
           sessionsRef.push({
             joinAt: firebase.database.ServerValue.TIMESTAMP,
             name: name,
           })
-          
+          sessionsRef.on('value', function(snapshot) {
+            var data = snapshot.val()
+            if (data) {
+              var keys = Object.keys(data)
+              var output = []
+              for (var i = 0; i < keys.length; i++) {
+                if (typeof data[keys[i]] === 'object') {
+                  output.push(data[keys[i]])
+                }
+              }
+              that.list = output
+            }
+          })
         }
       })(document);
     </script>
