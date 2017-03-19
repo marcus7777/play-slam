@@ -28,9 +28,9 @@
         </Play-page>
         <Join-page>
           <h2>Hello [[user.displayName]]</h2> 
-          <h3>List of people to play:</h3>
+          <h3>People to play:</h3>
           <template is="dom-repeat" items="[[list]]" sort="sortNames" filter="filterNames">
-            <paper-button>[[item]]</paper-button>
+            <paper-button on-tap="request">[[item]]</paper-button>
           </template>
         </Join-page>
         <login-page>
@@ -62,6 +62,15 @@
           }
           // a must be equal to b
           return 0
+        }
+        app.request = function(e) {
+          var requesting = e.target.innerText
+          var name = app.user.displayName.split(" ")[0]
+          firebase.database().ref("requests").push({
+            at: firebase.database.ServerValue.TIMESTAMP,
+            name: name,
+            requesting: requesting,
+          })
         }
         app.properties._list = {computed:"setList(user.displayName)"}
         app.setList = function(displayName) {
