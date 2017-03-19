@@ -47,7 +47,6 @@
         }
         app.properties.list = {computed:"setList(user.displayName)"}
         app.setList = function(displayName) {
-          var that = this
           var name = displayName.split(" ")[0]
           var sessionsRef = firebase.database().ref("sessions")
           sessionsRef.push({
@@ -64,7 +63,7 @@
                   output.push(data[keys[i]])
                 }
               }
-              that.list = output
+              app.list = output
             }
           })
         }
