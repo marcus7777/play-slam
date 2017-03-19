@@ -27,9 +27,10 @@
           <play-slam></play-slam>
         </Play-page>
         <Join-page>
-          <h1>hi {{user.displayName}} list of people to play: </h1>
-          <template is="dom-repeat" items="[[list]]" sort="sortNames">
-            <p>Name: [[item]]</p>
+          <h2>Hello [[user.displayName]]</h2> 
+          <h3>List of people to play:</h3>
+          <template is="dom-repeat" items="[[list]]" sort="sortNames" filter="filterNames">
+            <p>[[item]]</p>
           </template>
         </Join-page>
         <login-page>
@@ -44,6 +45,13 @@
         var app = document.querySelector('#app')
         app.logout = function () {
           app.$.auth.signOut()
+        }
+        app.filterNames = function(name) {
+          if (name !== app.user.displayName.split(" ")[0]) {
+            return true
+          } else {
+            return false
+          }
         }
         app.sortNames = function(a,b) {
           if (app.names[a] > app.names[b] ) {
